@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.DecideActivity">
 
+
     <TextView
         android:id="@+id/tv_kb_a"
         android:layout_width="wrap_content"
@@ -18,7 +19,7 @@
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="A" />
+        android:text="A" />
 
     <TextView
         android:id="@+id/tv_kb_g"
@@ -31,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_f"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="G" />
+        android:text="G" />
 
     <TextView
         android:id="@+id/tv_kb_c"
@@ -40,11 +41,12 @@
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kb_b"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_d"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_b"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="C" />
+        android:text="C" />
 
     <TextView
         android:id="@+id/tv_kb_d"
@@ -53,11 +55,12 @@
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kb_c"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_e"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_c"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="D" />
+        android:text="D" />
 
     <TextView
         android:id="@+id/tv_kb_h"
@@ -66,11 +69,12 @@
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kb_g"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_g"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="H" />
+        android:text="H" />
 
     <TextView
         android:id="@+id/tv_kb_e"
@@ -79,11 +83,12 @@
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kb_d"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_f"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_d"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="E" />
+        android:text="E" />
 
     <TextView
         android:id="@+id/tv_kb_f"
@@ -96,7 +101,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_e"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="F" />
+        android:text="F" />
 
     <TextView
         android:id="@+id/tv_kb_b"
@@ -109,7 +114,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_a"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="B" />
+        android:text="B" />
 
 
     <TextView
@@ -124,7 +129,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_n"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_g"
-        tools:text="O" />
+        android:text="O" />
 
     <TextView
         android:id="@+id/tv_kb_j"
@@ -138,7 +143,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_i"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_b"
-        tools:text="J" />
+        android:text="J" />
 
     <TextView
         android:id="@+id/tv_kb_k"
@@ -152,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_j"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_c"
-        tools:text="K" />
+        android:text="K" />
 
     <TextView
         android:id="@+id/tv_kb_i"
@@ -167,7 +172,7 @@
         app:layout_constraintStart_toEndOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_a"
-        tools:text="I" />
+        android:text="I" />
 
     <TextView
         android:id="@+id/tv_kb_n"
@@ -181,7 +186,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_m"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_f"
-        tools:text="N" />
+        android:text="N" />
 
     <TextView
         android:id="@+id/tv_kb_m"
@@ -195,7 +200,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_l"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_e"
-        tools:text="M" />
+        android:text="M" />
 
     <TextView
         android:id="@+id/tv_kb_l"
@@ -209,7 +214,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_k"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_d"
-        tools:text="L" />
+        android:text="L" />
 
     <TextView
         android:id="@+id/tv_kb_u"
@@ -223,7 +228,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_t"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_o"
-        tools:text="U" />
+        android:text="U" />
 
     <TextView
         android:id="@+id/tv_kb_r"
@@ -237,7 +242,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_q"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_l"
-        tools:text="R" />
+        android:text="R" />
 
     <TextView
         android:id="@+id/tv_kb_t"
@@ -251,7 +256,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_s"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_n"
-        tools:text="T" />
+        android:text="T" />
 
     <TextView
         android:id="@+id/tv_kb_q"
@@ -265,7 +270,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_p"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_k"
-        tools:text="Q" />
+        android:text="Q" />
 
     <TextView
         android:id="@+id/tv_kb_s"
@@ -279,7 +284,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_r"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_m"
-        tools:text="S" />
+        android:text="S" />
 
     <TextView
         android:id="@+id/tv_kb_p"
@@ -294,7 +299,7 @@
         app:layout_constraintStart_toEndOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_j"
-        tools:text="P" />
+        android:text="P" />
 
     <TextView
         android:id="@+id/tv_kb_x"
@@ -308,7 +313,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_w"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_r"
-        tools:text="X" />
+        android:text="X" />
 
     <TextView
         android:id="@+id/tv_kb_v"
@@ -323,7 +328,7 @@
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_p"
-        tools:text="V" />
+        android:text="V" />
 
     <TextView
         android:id="@+id/tv_kb_z"
@@ -337,7 +342,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_y"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_t"
-        tools:text="Z" />
+        android:text="Z" />
 
     <TextView
         android:id="@+id/tv_kb_w"
@@ -351,7 +356,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_v"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_q"
-        tools:text="W" />
+        android:text="W" />
 
     <TextView
         android:id="@+id/tv_kb_y"
@@ -365,7 +370,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_x"
         app:layout_constraintTop_toBottomOf="@+id/tv_kb_s"
-        tools:text="Y" />
+        android:text="Y" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -393,8 +398,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="378dp"
-        app:layout_constraintGuide_percent="0.6843" />
+        app:layout_constraintGuide_end="230dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
