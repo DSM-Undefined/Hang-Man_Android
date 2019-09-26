@@ -25,7 +25,7 @@
         android:id="@+id/ed_Questions_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="dksusdkfptud"
+        android:hint="단어를 입력하세요."
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
