@@ -6,20 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.DecideActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:lineSpacingExtra="5sp"
+        android:text="단어를 정해주세요"
+        android:textColor="#2b2a26"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+
+    <EditText
+        android:id="@+id/ed_Questions_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="dksusdkfptud"
+        android:lineSpacingExtra="5sp"
+        android:textColor="#2b2a26"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+
+    <TextView
+        android:id="@+id/decide_tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:lineSpacingExtra="3sp"
+        android:textColor="#d75c4a"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/ed_Questions_word"
+        app:layout_constraintTop_toBottomOf="@+id/ed_Questions_word"
+        android:text="2~10자사이로 입력해주세요" />
 
     <TextView
         android:id="@+id/tv_kb_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="A"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_b"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="A" />
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_g"
@@ -67,14 +104,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="H"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_kb_g"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_g"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="H" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_e"
@@ -123,13 +160,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="O"
         android:textColor="#2b2a26"
         android:textSize="35sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_n"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_g"
-        android:text="O" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_g" />
 
     <TextView
         android:id="@+id/tv_kb_j"
@@ -165,14 +202,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="I"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_j"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_a"
-        android:text="I" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_a" />
 
     <TextView
         android:id="@+id/tv_kb_n"
@@ -222,13 +258,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="U"
         android:textColor="#2b2a26"
         android:textSize="35sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_t"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_o"
-        android:text="U" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_o" />
 
     <TextView
         android:id="@+id/tv_kb_r"
@@ -292,14 +328,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="P"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_q"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_j"
-        android:text="P" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_j" />
 
     <TextView
         android:id="@+id/tv_kb_x"
@@ -321,14 +356,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="V"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_w"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline8"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_p"
-        android:text="V" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_p" />
 
     <TextView
         android:id="@+id/tv_kb_z"
@@ -336,13 +370,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="Z"
         android:textColor="#2b2a26"
         android:textSize="35sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_y"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_t"
-        android:text="Z" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_t" />
 
     <TextView
         android:id="@+id/tv_kb_w"
@@ -446,26 +480,60 @@
         app:layout_constraintStart_toEndOf="@+id/tv_kb_u" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.03888"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="9dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.961111111"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="9dp"
+        tools:ignore="DuplicateIds" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0843"
+        app:layout_constraintGuide_begin="234dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.276"
+        app:layout_constraintGuide_begin="113dp" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="35sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/decide_btn_submission"
+        android:lineSpacingExtra="5sp"
+        android:text="제출하기"
+        app:layout_constraintDimensionRatio="6:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/tv_kb_v"
-        app:layout_constraintGuide_begin="98dp"
-        app:layout_constraintGuide_percent="0.24722"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="98dp"
-        app:layout_constraintGuide_percent="0.75277"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/tv_kb_z" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50"
+        app:layout_constraintGuide_begin="399dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
