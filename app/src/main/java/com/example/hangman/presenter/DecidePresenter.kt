@@ -8,7 +8,9 @@ class DecidePresenter(private val view: DecideContract.View) : DecideContract.Pr
     }
 
     override fun deleteButtonOnClick(text: String) {
-        view.setEditText(text.substring(0, text.length - 1))
+        if(text.isNotEmpty()) {
+            view.setEditText(text.substring(0, text.length - 1))
+        }
     }
 
     override fun checkLetterCount(length: Int) {
