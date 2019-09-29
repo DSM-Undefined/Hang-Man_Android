@@ -25,7 +25,7 @@
         android:id="@+id/ed_Questions_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="dksusdkfptud"
+        android:hint="단어를 입력하세요."
         android:lineSpacingExtra="5sp"
         android:textColor="#2b2a26"
         android:textSize="35sp"
@@ -535,5 +535,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.50"
         app:layout_constraintGuide_begin="399dp" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
