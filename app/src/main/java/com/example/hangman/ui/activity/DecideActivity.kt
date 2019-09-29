@@ -2,38 +2,29 @@ package com.example.hangman.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
 import com.example.hangman.R
 import com.example.hangman.contract.DecideContract
 import com.example.hangman.presenter.DecidePresenter
 import kotlinx.android.synthetic.main.activity_decide.*
-import java.security.AccessController.getContext
 
 class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract.View {
-    private lateinit var decidePresenter: DecidePresenter
-    private var editTextData = ""
+    private lateinit var presenter: DecidePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_decide)
 
-        decidePresenter = DecidePresenter(this)
+        presenter = DecidePresenter(this)
 
-        initTextViewOnClick()
-
+        initViewListener()
     }
 
-    override fun appendText(appendText: String) {
-        editTextData += appendText
-        ed_Questions_word.setText(editTextData)
-    }
-
-    private fun initTextViewOnClick() {
+    private fun initViewListener() {
         tv_kb_a.setOnClickListener(this)
         tv_kb_b.setOnClickListener(this)
         tv_kb_c.setOnClickListener(this)
@@ -60,20 +51,37 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
         tv_kb_x.setOnClickListener(this)
         tv_kb_y.setOnClickListener(this)
         tv_kb_z.setOnClickListener(this)
+        // 각각 스펠링 TextView OnClick
+
+        btn_submit.setOnClickListener(this)
+        btn_delete.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
-        if (view is TextView?) {
-            editTextData = ed_Questions_word.text.toString()
-            if (editTextData.length < 10) decidePresenter.alphabetsOnClick(view?.text.toString())
-        }
-        else if(view?.id == R.id.btn_submit) {
-            // TODO : editTextData 가 2 ~ 10 사이가 아니면 경고, 맞으면 startActivity 로직을 Presenter 에 작성.
+        if (view?.id == R.id.btn_submit) {
+            presenter.checkLetterCount(ed_Questions_word.length())
+        } else if (view?.id == R.id.btn_delete) {
+            presenter.deleteButtonOnClick(ed_Questions_word.text.toString())
+        } else if (view is TextView?) {
+            if (ed_Questions_word.length() < 10) presenter.alphabetsOnClick(view?.text.toString())
         }
     }
-}
 
-//        btn_submit.setOnClickListener{
-//            val shack : Animation = AnimationUtils.loadAnimation(this, R.anim.dicide_an_error)
-//            ed_Questions_word.startAnimation(shack)
-//        }
+    override fun appendText(appendText: String) {
+        val text = "${ed_Questions_word.text}$appendText"
+        ed_Questions_word.setText(text)
+    }
+
+    override fun setEditText(text: String) {
+        ed_Questions_word.setText(text)
+    }
+
+    override fun errorToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun buttonAnimation() {
+        val shack: Animation = AnimationUtils.loadAnimation(this, R.anim.dicide_an_error)
+        btn_submit.startAnimation(shack)
+    }
+}
