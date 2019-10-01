@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:viewportWidth="274"
+    android:viewportHeight="274"
+    android:height="274dp"
+    android:width="274dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M13,267 172,267  ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M13,267 C13,255 25,243 37,243  ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M37,243 148,243 ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M148,243 C160,243 172,255 172,267  ">
+    </path>
+
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M105.5,238.5 105.5,112.5 ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M105.5,88.5 105.5,89.5 ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M105.5,65.5 105.5,5.5 ">
+    </path>
+
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M85,242 85,5 ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M85,5 203,5 ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M203,5 C209,5 215,11 215,17  ">
+    </path>
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,17 215,34 ">
+    </path>
+<!--    머리-->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,34 C231,34 247,50 247,66 C247,82 231,98 215,98 C199,98 183,82 183,66  C183,50 199,34 215,34 ">
+    </path>
+    <!--  몸통  -->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,98 215,180 ">
+    </path>
+    <!--  왼쪽팔  -->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,100 175,136 ">
+    </path>
+    <!--  오른쪽팔  -->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,100 255,136 ">
+    </path>
+    <!--  몸통  -->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,180 175,216 ">
+    </path>
+    <!--  몸통  -->
+    <path android:strokeColor="@android:color/black" android:strokeWidth="10" android:strokeLineCap="round"
+        android:pathData="M215,180 255,216 ">
+    </path>
+</vector>
