@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.SignupActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <EditText
+        android:id="@+id/ed_nickname_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="NickName"
+        android:inputType="text"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1675" />
+
+    <EditText
+        android:id="@+id/ed_id_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="ID"
+        android:inputType="text"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
+
+    <EditText
+        android:id="@+id/ed_password_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="PassWord"
+        android:inputType="textPassword"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <EditText
+        android:id="@+id/ed_pwcheck_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="PW-Check"
+        android:inputType="textPassword"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.439" />
+
+    <EditText
+        android:id="@+id/ed_email_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
+
+    <EditText
+        android:id="@+id/ed_cer_num_signup2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Certification Number"
+        android:inputType="textPassword"
+        android:lineSpacingExtra="3sp"
+        android:textColorHint="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:background="#d75c4a"
+        android:gravity="top|center"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.801" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
