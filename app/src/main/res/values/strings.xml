@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hang Man</string>
+    <string name="signup_underline_text"><u>Sign Up</u></string>
 </resources>
