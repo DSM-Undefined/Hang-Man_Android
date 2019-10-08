@@ -61,7 +61,7 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
         if (view?.id == R.id.btn_submit) {
             presenter.checkLetterCount(ed_Questions_word.length())
         } else if (view?.id == R.id.btn_delete) {
-            presenter.deleteButtonOnClick(ed_Questions_word.text.toString())
+            presenter.onClickDeleteButton(ed_Questions_word.text.toString())
         } else if (view is TextView?) {
             if (ed_Questions_word.length() < 10) presenter.alphabetsOnClick(view?.text.toString())
         }

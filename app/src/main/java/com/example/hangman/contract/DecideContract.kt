@@ -10,7 +10,7 @@ interface DecideContract {
 
     interface Presenter {
         fun alphabetsOnClick(text : String)
-        fun deleteButtonOnClick(text : String)
+        fun onClickDeleteButton(text : String)
         fun checkLetterCount(length : Int)
     }
 }
