@@ -18,6 +18,11 @@ class SigninActivity : AppCompatActivity(), SigninContract.View {
 
         presenter = SigninPresenter(this)
 
+        btn_signin.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
         tv_signup_button.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
