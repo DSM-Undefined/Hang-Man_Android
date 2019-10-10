@@ -7,7 +7,7 @@ class DecidePresenter(private val view: DecideContract.View) : DecideContract.Pr
         view.appendText(text)
     }
 
-    override fun deleteButtonOnClick(text: String) {
+    override fun onClickDeleteButton(text: String) {
         if(text.isNotEmpty()) {
             view.setEditText(text.substring(0, text.length - 1))
         }
