@@ -118,13 +118,16 @@
 
     <Button
         android:id="@+id/btn_signup"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:background="#4aadd7"
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="45sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/sigup_btn"
+        android:lineSpacingExtra="5sp"
+        app:layout_constraintDimensionRatio="5:1"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
