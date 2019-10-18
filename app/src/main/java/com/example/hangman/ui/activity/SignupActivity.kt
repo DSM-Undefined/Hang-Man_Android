@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity(), SignupContract.View {
 
-    private lateinit var presenter : SignupPresenter
+    private lateinit var presenter: SignupPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +22,15 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
         presenter = SignupPresenter()
 
         btn_signup.setOnClickListener {
-            presenter.checkRegisterData()
-            showToast("회원가입에 성공했습니다.")
+            if (!presenter.pwCheckData(
+                    ed_password_signup.text.toString(),
+                    ed_pwcheck_signup.text.toString()
+                )
+            ) {
+                showToast("비밀번호가 다릅니다.")
+            } else {
+                showToast("회원가입에 성공했습니다.")
+            }
             finish()
         }
     }
@@ -37,7 +44,7 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
         btn_submit.startAnimation(shack)
     }
 
-    private fun showToast(text : String) {
+    private fun showToast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }
