@@ -13,12 +13,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.125"/>
+        app:layout_constraintGuide_percent="0.150"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/main_top_guide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="7.5dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="6dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_toolbar_main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
+
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/main_top_guide">
@@ -64,112 +76,114 @@
                 android:id="@+id/main_toolbar_guide5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.208"/>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.208"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.225"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.225"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.544"/>
+            <androidx.constraintlayout.widet.Guideline
+                android:id="@+id/main_toolbar_guide7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.544"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.575"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.575"/>
 
-        <TextView
-            android:id="@+id/tv_nickname_main"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="NickName"
-            android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="@id/main_toolbar_guide6"
-            app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide8"
-            app:layout_constraintStart_toStartOf="@id/main_toolbar_guide5"
-            app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide7"/>
+            <TextView
+                android:id="@+id/tv_nickname_main"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="NickName"
+                android:textSize="25sp"
+                app:layout_constraintTop_toTopOf="@id/main_toolbar_guide6"
+                app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide8"
+                app:layout_constraintStart_toStartOf="@id/main_toolbar_guide5"
+                app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide7"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.550"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.550"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.291"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.291"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.763"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.763"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="LV 1"
-            android:textSize="17sp"
-            app:layout_constraintTop_toTopOf="@id/main_toolbar_guide9"
-            app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide11"
-            app:layout_constraintStart_toStartOf="@id/main_toolbar_guide5"
-            app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide10"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="LV 1"
+                android:textSize="17sp"
+                app:layout_constraintTop_toTopOf="@id/main_toolbar_guide9"
+                app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide11"
+                app:layout_constraintStart_toStartOf="@id/main_toolbar_guide5"
+                app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide10"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.736"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.736"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.300"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.300"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.944"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.944"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/main_toolbar_guide15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.713"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/main_toolbar_guide15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.713"/>
 
-        <TextView
-            android:id="@+id/tv_make_room_main"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="방생성"
-            android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="@id/main_toolbar_guide13"
-            app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide15"
-            app:layout_constraintStart_toStartOf="@id/main_toolbar_guide12"
-            app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide14"/>
+            <TextView
+                android:id="@+id/tv_make_room_main"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="방생성"
+                android:textSize="25sp"
+                app:layout_constraintTop_toTopOf="@id/main_toolbar_guide13"
+                app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide15"
+                app:layout_constraintStart_toStartOf="@id/main_toolbar_guide12"
+                app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide14"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
