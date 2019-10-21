@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         info.add(Info("Sample room4", "7/8"))
         info.add(Info("Sample room5", "1/8"))
         info.add(Info("Sample room6", "2/8"))
+        info.add(Info("Sample room7", "7/8"))
+        info.add(Info("Sample room8", "8/8"))
 
         val adapter = MainAdapter(info)
         rv_main.adapter = adapter
