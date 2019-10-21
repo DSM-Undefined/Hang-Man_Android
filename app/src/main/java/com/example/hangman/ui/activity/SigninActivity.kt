@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_signin.*
 
 class SigninActivity : AppCompatActivity(), SigninContract.View {
     private lateinit var presenter : SigninPresenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
@@ -19,7 +18,7 @@ class SigninActivity : AppCompatActivity(), SigninContract.View {
         presenter = SigninPresenter(this)
 
         btn_signin.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            presenter.checkIDPW(ed_id.text.toString(), ed_password.text.toString())
             finish()
         }
 
@@ -32,5 +31,9 @@ class SigninActivity : AppCompatActivity(), SigninContract.View {
              SigninActivity 에서의 Login 은 서버와 통신이 필요한데, 그 이외의 로직은 모두 onClick - startActivity 뿐임.
              우선 MVP 구조를 만들어 두고 추후 서버 개발이 필요한 경우에 MVP가 필요하지 않다고 판단되면 Contract와 Presenter를 제거한다.
          */
+    }
+
+    override fun startMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }
