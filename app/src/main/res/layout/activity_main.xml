@@ -86,7 +86,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.225"/>
 
-            <androidx.constraintlayout.widet.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/main_toolbar_guide7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
