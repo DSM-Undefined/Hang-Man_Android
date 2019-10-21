@@ -3,48 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
+    android:layout_height="match_parent"
     tools:context=".ui.activity.DecideActivity">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:lineSpacingExtra="5sp"
-        android:text="단어를 정해주세요"
-        android:textColor="#2b2a26"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
-
-    <EditText
-        android:id="@+id/ed_Questions_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="단어를 입력하세요."
-        android:lineSpacingExtra="5sp"
-        android:textColor="#2b2a26"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
-
-    <TextView
-        android:id="@+id/decide_tv_error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:lineSpacingExtra="3sp"
-        android:textColor="#d75c4a"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/ed_Questions_word"
-        app:layout_constraintTop_toBottomOf="@+id/ed_Questions_word"
-        android:text="2~10자사이로 입력해주세요" />
+        android:textColor="#2B2A26"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        tools:ignore="MissingConstraints"
+        tools:text="USER님 차례입니다." />
 
     <TextView
         android:id="@+id/tv_kb_a"
@@ -503,46 +474,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0843"
+        app:layout_constraintGuide_percent="0.038"
         app:layout_constraintGuide_begin="234dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline13"
+        android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.276"
-        app:layout_constraintGuide_begin="113dp" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.103"
+        app:layout_constraintGuide_begin="123dp" />
 
-    <Button
-        android:id="@+id/btn_submit"
-        android:textStyle="bold"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:textSize="35sp"
-        android:textColor="#ffffff"
-        android:background="@drawable/decide_btn_submission"
-        android:lineSpacingExtra="5sp"
-        android:text="제출하기"
-        app:layout_constraintDimensionRatio="6:1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/game_hang_man"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
+        android:id="@+id/guideline14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50"
-        app:layout_constraintGuide_begin="399dp" />
+        app:layout_constraintGuide_percent="0.22"
+        app:layout_constraintGuide_begin="151dp" />
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
