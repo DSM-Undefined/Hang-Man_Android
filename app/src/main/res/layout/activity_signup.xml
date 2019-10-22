@@ -13,6 +13,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.08" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_ic_top_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.036" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_ic_bottom_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.319" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_ic_left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.30" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signup_ic_right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/signup_right_guide"
@@ -21,21 +45,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.92" />
 
-    <EditText
-        android:id="@+id/ed_nickname_signup"
+    <ImageView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="NickName"
-        android:inputType="text"
-        android:lineSpacingExtra="3sp"
-        android:textColorHint="#707070"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
-        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1675" />
+        android:layout_height="0dp"
+        android:src="@drawable/ic_siginup_hangman"
+        app:layout_constraintBottom_toTopOf="@+id/signup_ic_bottom_guide"
+        app:layout_constraintEnd_toStartOf="@+id/signup_ic_right_guide"
+        app:layout_constraintStart_toStartOf="@+id/signup_ic_left_guide"
+        app:layout_constraintTop_toTopOf="@+id/signup_ic_top_guide"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/ed_id_signup"
@@ -51,7 +69,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.366" />
 
     <EditText
         android:id="@+id/ed_password_signup"
@@ -67,7 +85,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintVertical_bias="0.458" />
 
     <EditText
         android:id="@+id/ed_pwcheck_signup"
@@ -83,7 +101,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <EditText
         android:id="@+id/ed_email_signup"
@@ -99,7 +117,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.642" />
 
     <EditText
         android:id="@+id/ed_cer_num_signup2"
@@ -115,7 +133,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
+        app:layout_constraintVertical_bias="0.731" />
 
     <Button
         android:id="@+id/btn_signup"
@@ -133,6 +151,6 @@
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.801" />
+        app:layout_constraintVertical_bias="0.842" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
