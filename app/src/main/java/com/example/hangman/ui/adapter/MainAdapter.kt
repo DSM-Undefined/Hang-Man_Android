@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hangman.data.model.Info
 import com.example.hangman.R
@@ -22,12 +23,17 @@ class MainAdapter(private val infoList: ArrayList<Info>) : RecyclerView.Adapter<
     }
 
     class MainViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var tvRoomName: TextView = itemView.findViewById(R.id.tv_room_name_main_item)
-        private var tvCount: TextView = itemView.findViewById(R.id.tv_count_main_item)
+        private val tvRoomName: TextView = itemView.findViewById(R.id.tv_room_name_main_item)
+        private val tvCount: TextView = itemView.findViewById(R.id.tv_count_main_item)
+        private val itemLayout : ConstraintLayout = itemView.findViewById(R.id.layout_item_main)
 
         fun bind(info : Info) {
             tvRoomName.text = info.roomTitle
             tvCount.text = info.count
+            itemLayout.setOnClickListener {
+                /* TODO : 어차피 방 ID로 구분할건데 이거 adapterPosition이랑 어떻게 낑겨서 개발
+                *   어떻게든 합니다 진짜 일단 그냥 RoomActivity 이동. MVP 로직으로 변경 필요 */
+            }
         }
     }
 }

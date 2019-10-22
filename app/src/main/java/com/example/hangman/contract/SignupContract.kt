@@ -7,6 +7,6 @@ interface SignupContract {
     }
 
     interface Presenter {
-        fun checkRegisterData(vararg text : String)
+        fun pwCheckData(pwText : String, pwCheckText : String): Boolean
     }
 }
