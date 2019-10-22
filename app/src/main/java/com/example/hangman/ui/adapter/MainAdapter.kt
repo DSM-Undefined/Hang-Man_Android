@@ -23,9 +23,9 @@ class MainAdapter(private val infoList: ArrayList<Info>) : RecyclerView.Adapter<
     }
 
     class MainViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var tvRoomName: TextView = itemView.findViewById(R.id.tv_room_name_main_item)
-        var tvCount: TextView = itemView.findViewById(R.id.tv_count_main_item)
-        var itemLayout : ConstraintLayout = itemView.findViewById(R.id.layout_item_main)
+        private val tvRoomName: TextView = itemView.findViewById(R.id.tv_room_name_main_item)
+        private val tvCount: TextView = itemView.findViewById(R.id.tv_count_main_item)
+        private val itemLayout : ConstraintLayout = itemView.findViewById(R.id.layout_item_main)
 
         fun bind(info : Info) {
             tvRoomName.text = info.roomTitle
