@@ -1,15 +1,17 @@
 package com.example.hangman.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hangman.data.model.Info
 import com.example.hangman.R
+import com.example.hangman.data.model.Room
+import com.example.hangman.ui.activity.RoomActivity
 
-class MainAdapter(private val infoList: ArrayList<Info>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val infoList: ArrayList<Room>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
@@ -27,12 +29,11 @@ class MainAdapter(private val infoList: ArrayList<Info>) : RecyclerView.Adapter<
         private val tvCount: TextView = itemView.findViewById(R.id.tv_count_main_item)
         private val itemLayout : ConstraintLayout = itemView.findViewById(R.id.layout_item_main)
 
-        fun bind(info : Info) {
-            tvRoomName.text = info.roomTitle
-            tvCount.text = info.count
+        fun bind(room : Room) {
+            tvRoomName.text = room.name
+            tvCount.text = "${room.participants?.current}/${room.participants?.max}"
             itemLayout.setOnClickListener {
-                /* TODO : 어차피 방 ID로 구분할건데 이거 adapterPosition이랑 어떻게 낑겨서 개발
-                *   어떻게든 합니다 진짜 일단 그냥 RoomActivity 이동. MVP 로직으로 변경 필요 */
+                itemView.context.startActivity(Intent(itemView.context, RoomActivity::class.java))
             }
         }
     }
