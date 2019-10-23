@@ -6,6 +6,6 @@ interface GameroomContract {
     }
 
     interface Presenter {
-
+        fun alphabetsOnClick(text: String)
     }
 }

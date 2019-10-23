@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.view.View
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
-import com.example.hangman.presenter.GamePresenter
+import com.example.hangman.presenter.GameroomPresenter
 import kotlinx.android.synthetic.main.activity_decide.*
 
-class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomContract.View{
-    private lateinit var gamePresenter: GamePresenter
+class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View{
+    private lateinit var gamePresenter: GameroomPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameroom)
 
-        gamePresenter = GamePresenter(this)
+        gamePresenter = GameroomPresenter(this)
         initViewListener()
     }
 
