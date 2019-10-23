@@ -11,11 +11,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:lineSpacingExtra="5sp"
         android:text="단어를 정해주세요"
         android:textColor="#2b2a26"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintHorizontal_bias="0.486"
@@ -38,13 +38,13 @@
         android:id="@+id/decide_tv_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:lineSpacingExtra="3sp"
+        android:text="2~10자사이로 입력해주세요"
         android:textColor="#d75c4a"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ed_Questions_word"
-        app:layout_constraintTop_toBottomOf="@+id/ed_Questions_word"
-        android:text="2~10자사이로 입력해주세요" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_Questions_word" />
 
     <TextView
         android:id="@+id/tv_kb_a"
@@ -64,41 +64,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="G"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_f"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="G" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="C"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_kb_b"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_d"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_b"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="C" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_d"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="D"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_kb_c"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_e"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_c"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="D" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_h"
@@ -119,40 +119,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="E"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_kb_d"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_f"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_d"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="E" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_f"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="F"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_g"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_e"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="F" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tv_kb_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5sp"
+        android:text="B"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_c"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_a"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:text="B" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 
     <TextView
@@ -175,13 +175,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:lineSpacingExtra="5sp"
+        android:text="J"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_k"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_i"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_b"
-        android:text="J" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_b" />
 
     <TextView
         android:id="@+id/tv_kb_k"
@@ -189,13 +189,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="K"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_l"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_j"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_c"
-        android:text="K" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_c" />
 
     <TextView
         android:id="@+id/tv_kb_i"
@@ -217,13 +217,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="N"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_o"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_m"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_f"
-        android:text="N" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_f" />
 
     <TextView
         android:id="@+id/tv_kb_m"
@@ -231,13 +231,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="M"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_n"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_l"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_e"
-        android:text="M" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_e" />
 
     <TextView
         android:id="@+id/tv_kb_l"
@@ -245,13 +245,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="L"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_m"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_k"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_d"
-        android:text="L" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_d" />
 
     <TextView
         android:id="@+id/tv_kb_u"
@@ -273,13 +273,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="R"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_s"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_q"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_l"
-        android:text="R" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_l" />
 
     <TextView
         android:id="@+id/tv_kb_t"
@@ -287,13 +287,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="T"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_u"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_s"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_n"
-        android:text="T" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_n" />
 
     <TextView
         android:id="@+id/tv_kb_q"
@@ -301,13 +301,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="Q"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_r"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_p"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_k"
-        android:text="Q" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_k" />
 
     <TextView
         android:id="@+id/tv_kb_s"
@@ -315,13 +315,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="S"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_t"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_r"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_m"
-        android:text="S" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_m" />
 
     <TextView
         android:id="@+id/tv_kb_p"
@@ -343,13 +343,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="X"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_y"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_w"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_r"
-        android:text="X" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_r" />
 
     <TextView
         android:id="@+id/tv_kb_v"
@@ -385,13 +385,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="W"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_x"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_v"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_q"
-        android:text="W" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_q" />
 
     <TextView
         android:id="@+id/tv_kb_y"
@@ -399,13 +399,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="5sp"
+        android:text="Y"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_z"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_kb_x"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kb_s"
-        android:text="Y" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kb_s" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -484,18 +484,18 @@
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.03888"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="9dp" />
+        app:layout_constraintGuide_begin="9dp"
+        app:layout_constraintGuide_percent="0.03888" />
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.961111111"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="9dp"
+        app:layout_constraintGuide_percent="0.961111111"
         tools:ignore="DuplicateIds" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -503,27 +503,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0843"
-        app:layout_constraintGuide_begin="234dp" />
+        app:layout_constraintGuide_begin="234dp"
+        app:layout_constraintGuide_percent="0.0843" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.276"
-        app:layout_constraintGuide_begin="113dp" />
+        app:layout_constraintGuide_begin="113dp"
+        app:layout_constraintGuide_percent="0.276" />
 
     <Button
         android:id="@+id/btn_submit"
-        android:textStyle="bold"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:textSize="35sp"
-        android:textColor="#ffffff"
         android:background="@drawable/decide_btn_submission"
         android:lineSpacingExtra="5sp"
         android:text="제출하기"
+        android:textColor="#ffffff"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintDimensionRatio="6:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -534,15 +534,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50"
-        app:layout_constraintGuide_begin="399dp" />
+        app:layout_constraintGuide_begin="399dp"
+        app:layout_constraintGuide_percent="0.50" />
 
     <Button
         android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:background="@drawable/game_delete"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_kb_z"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/tv_kb_z" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
