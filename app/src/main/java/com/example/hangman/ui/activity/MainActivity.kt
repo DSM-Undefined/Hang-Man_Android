@@ -1,5 +1,6 @@
 package com.example.hangman.ui.activity
 
+import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         })
         tv_make_room_main.setOnClickListener{
             makeRoomDialog.show()
+            val display = windowManager.defaultDisplay
+            val size = Point()
+            val window = makeRoomDialog.window
+            display.getSize(size)
+
+            val x = (size.x * 0.8f).toInt()
+            val y = (size.y * 0.45f).toInt()
+            window?.setLayout(x, y)
         }
     }
 }

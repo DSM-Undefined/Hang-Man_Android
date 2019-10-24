@@ -2,6 +2,7 @@ package com.example.hangman.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
@@ -18,7 +19,6 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
         setContentView(R.layout.dialog_makeroom)
 
         setCanceledOnTouchOutside(true)
-//        window?.setBackgroundDrawable(ColorDrawable())
         window?.setDimAmount(0.8f)
 
         seekbar_makeroom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
