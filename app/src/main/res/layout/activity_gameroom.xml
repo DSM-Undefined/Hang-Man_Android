@@ -151,7 +151,6 @@
         android:gravity="center"
         android:lineSpacingExtra="5sp"
         android:text="B"
-        android:background="@drawable/circle_correct_answer"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_c"
