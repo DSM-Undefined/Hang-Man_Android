@@ -209,7 +209,7 @@
         app:layout_constraintBottom_toBottomOf="@id/makeroom_guide18"
         app:layout_constraintStart_toStartOf="@id/makeroom_guide15"
         app:layout_constraintEnd_toEndOf="@id/makeroom_guide17"
-        android:src="@drawable/cancel"
+        android:src="@drawable/ic_close_black_24"
         android:background="@null"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

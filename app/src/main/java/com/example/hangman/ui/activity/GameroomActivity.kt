@@ -43,17 +43,13 @@ class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomCont
          linearlayout.addView(gameroom_tv_1)*/
 
 
-         val tvArray = arrayListOf<TextView>()
-         repeat(4) {
+         tvArray = arrayListOf()
+         repeat(5) {
              tvArray.add(TextView(this))
          }
          val gameroom_tv_1 = TextView(this)
          gameroom_tv_1.setText("  ")
          gameroom_tv_1.setTextSize(35F)
-         tvArray[0].setText("A ")
-         tvArray[1].setText("B ")
-         tvArray[2].setText("C ")
-         tvArray[3].setText("D ")
          for (i in 0..num){
              tvArray[i].setTextColor(Color.parseColor(tvcolor))
              tvArray[i].setPadding(0,0,0,3)
@@ -108,9 +104,17 @@ class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomCont
         //tvArray[0].text = appendText
     }
     override fun wrongText(appendText: String) {
+        val tvid : Int = getResources().getIdentifier("tv_kb_"+appendText.toLowerCase(),"id",packageName)
+        val tv : TextView = findViewById(tvid)
+        tv.setBackgroundResource(R.drawable.ic_close_black_24dp)
+        tv.setEnabled(false)
     }
     override fun rightText(appendText: String, index : Int) {
         tvArray[index].text = appendText
+        val tvid : Int = getResources().getIdentifier("tv_kb_"+appendText.toLowerCase(),"id",packageName)
+        val tv : TextView = findViewById(tvid)
+        tv.setBackgroundResource(R.drawable.circle_correct_answer)
+        tv.setEnabled(false)
     }
 
 }
