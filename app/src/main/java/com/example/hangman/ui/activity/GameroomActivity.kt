@@ -13,26 +13,24 @@ import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
-import com.example.hangman.presenter.GamePresenter
+import com.example.hangman.presenter.GameroomPresenter
 import kotlinx.android.synthetic.main.activity_decide.*
 
-
-
-class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomContract.View{
-    private lateinit var gamePresenter: GamePresenter
+class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View{
+    private lateinit var gamePresenter: GameroomPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameroom)
 
-        gamePresenter = GamePresenter(this)
+        gamePresenter = GameroomPresenter(this)
         initViewListener()
         addedittext(3)
     }
 
 
      private fun addedittext(num : Int){
-         val tvcolor : String ="#2B2A26"
+         val tvcolor ="#2B2A26"
          val linearlayout : LinearLayout = findViewById(R.id.gameroom_letter)
          linearlayout.gravity = Gravity.CENTER
 
@@ -49,7 +47,7 @@ class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomCont
          repeat(4) {
              tvArray.add(TextView(this))
          }
-         val gameroom_tv_1 : TextView = TextView(this)
+         val gameroom_tv_1 = TextView(this)
          gameroom_tv_1.setText("  ")
          gameroom_tv_1.setTextSize(35F)
          tvArray[0].setText("A ")
