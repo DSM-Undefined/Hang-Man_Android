@@ -3,29 +3,29 @@ package com.example.hangman.ui.activity
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.marginBottom
-import androidx.core.view.marginLeft
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
 import com.example.hangman.presenter.GameroomPresenter
 import kotlinx.android.synthetic.main.activity_decide.*
 
-class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View{
-    private lateinit var gamePresenter: GameroomPresenter
+class GameroomActivity : AppCompatActivity() , View.OnClickListener,GameroomContract.View{
+
+    var tvArray = arrayListOf<TextView>()
+    private lateinit var presenter: GameroomPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameroom)
 
-        gamePresenter = GameroomPresenter(this)
+        presenter = GameroomPresenter(this)
         initViewListener()
-        addedittext(3)
+        addedittext(4)
     }
 
 
@@ -66,7 +66,6 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
          }
 
      }
-
     private fun initViewListener() {
         tv_kb_a.setOnClickListener(this)
         tv_kb_b.setOnClickListener(this)
@@ -96,7 +95,22 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         tv_kb_z.setOnClickListener(this)
     }
 
-    override fun onClick(p0: View?) {
-
+    override fun onClick(view: View?) {
+        if (view is TextView?) {
+            presenter.alphabetsOnClick(view?.text.toString())
+        }
     }
+
+    override fun setEditText(text: String) {
+        ed_Questions_word.setText(text)
+    }
+    override fun appendText(appendText: String) {
+        //tvArray[0].text = appendText
+    }
+    override fun wrongText(appendText: String) {
+    }
+    override fun rightText(appendText: String, index : Int) {
+        tvArray[index].text = appendText
+    }
+
 }
