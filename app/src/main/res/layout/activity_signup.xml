@@ -146,7 +146,6 @@
         android:background="@drawable/sigup_btn"
         android:lineSpacingExtra="5sp"
         app:layout_constraintDimensionRatio="5:1"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
         app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
