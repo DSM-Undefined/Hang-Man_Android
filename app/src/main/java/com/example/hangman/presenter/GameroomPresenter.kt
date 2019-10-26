@@ -6,5 +6,4 @@ class GameroomPresenter(private val view: GameroomContract.View) : GameroomContr
     override fun alphabetsOnClick(text: String) {
 
     }
-
 }

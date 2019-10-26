@@ -1,8 +1,16 @@
 package com.example.hangman.ui.activity
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
 import com.example.hangman.presenter.GameroomPresenter
@@ -17,7 +25,47 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
 
         gamePresenter = GameroomPresenter(this)
         initViewListener()
+        addedittext(3)
     }
+
+
+     private fun addedittext(num : Int){
+         val tvcolor ="#2B2A26"
+         val linearlayout : LinearLayout = findViewById(R.id.gameroom_letter)
+         linearlayout.gravity = Gravity.CENTER
+
+/*
+         val gameroom_tv_1 : TextView = TextView(this)
+         gameroom_tv_1.setText("A")
+         gameroom_tv_1.setTextSize(35F)
+         gameroom_tv_1.setTextColor(Color.parseColor(tvcolor))
+         gameroom_tv_1.setBackgroundResource(R.drawable.gameroom_edittext_custum)
+         linearlayout.addView(gameroom_tv_1)*/
+
+
+         val tvArray = arrayListOf<TextView>()
+         repeat(4) {
+             tvArray.add(TextView(this))
+         }
+         val gameroom_tv_1 = TextView(this)
+         gameroom_tv_1.setText("  ")
+         gameroom_tv_1.setTextSize(35F)
+         tvArray[0].setText("A ")
+         tvArray[1].setText("B ")
+         tvArray[2].setText("C ")
+         tvArray[3].setText("D ")
+         for (i in 0..num){
+             tvArray[i].setTextColor(Color.parseColor(tvcolor))
+             tvArray[i].setPadding(0,0,0,3)
+             tvArray[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
+             tvArray[i].setGravity(Gravity.CENTER)
+             tvArray[i].setBackgroundResource(R.drawable.gameroom_edittext_custum)
+         }
+         for (i in 0..num){
+             linearlayout.addView(tvArray[i])
+         }
+
+     }
 
     private fun initViewListener() {
         tv_kb_a.setOnClickListener(this)
