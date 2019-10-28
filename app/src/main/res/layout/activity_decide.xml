@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:lineSpacingExtra="3sp"
         android:text="2~10자사이로 입력해주세요"
-        android:textColor="#d75c4a"
+        android:textColor="#D93644"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ed_Questions_word"

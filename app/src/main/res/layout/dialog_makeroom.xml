@@ -168,7 +168,7 @@
         app:layout_constraintBottom_toBottomOf="@id/makeroom_guide14"
         app:layout_constraintStart_toStartOf="@id/makeroom_guide11"
         app:layout_constraintEnd_toEndOf="@id/makeroom_guide13"
-        android:background="#d75c4a"
+        android:background="#D93644"
         android:text="방 생성하기"
         android:textColor="@color/white"
         android:textSize="23sp"/>
