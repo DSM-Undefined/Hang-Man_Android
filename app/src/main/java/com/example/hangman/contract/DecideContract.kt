@@ -1,5 +1,7 @@
 package com.example.hangman.contract
 
+import android.widget.TextView
+
 interface DecideContract {
     interface View {
         fun appendText(appendText : String)

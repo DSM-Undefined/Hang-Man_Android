@@ -3,10 +3,8 @@ package com.example.hangman.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hangman.R
 import com.example.hangman.contract.RoomContract
-import com.example.hangman.data.model.Room
 import com.example.hangman.presenter.RoomPresenter
 import com.example.hangman.util.UserState
 import kotlinx.android.synthetic.main.activity_room.*

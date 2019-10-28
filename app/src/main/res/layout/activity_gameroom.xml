@@ -12,27 +12,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#2B2A26"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/gameroom_username"
         app:layout_constraintTop_toTopOf="@+id/guideline11"
         tools:ignore="MissingConstraints"
-        tools:text="님 차례입니다." />
+        android:text="님 차례입니다." />
 
     <TextView
         android:id="@+id/gameroom_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#2B2A26"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11"
         tools:ignore="MissingConstraints"
-        tools:text="USER" />
+        android:text="USER" />
 
     <TextView
         android:id="@+id/tv_kb_a"
@@ -151,7 +151,6 @@
         android:gravity="center"
         android:lineSpacingExtra="5sp"
         android:text="B"
-        android:background="@drawable/circle_correct_answer"
         android:textColor="#2b2a26"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_kb_c"
@@ -571,5 +570,13 @@
         app:layout_constraintGuide_begin="151dp"
         app:layout_constraintGuide_percent="0.22" />
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id ="@+id/gameroom_letter"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
