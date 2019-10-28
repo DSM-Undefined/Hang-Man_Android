@@ -293,7 +293,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:text="준비"
-            android:background="#7D362B"/>
+            android:background="#D93644"/>
 
         <Button
             android:id="@+id/button_out"
