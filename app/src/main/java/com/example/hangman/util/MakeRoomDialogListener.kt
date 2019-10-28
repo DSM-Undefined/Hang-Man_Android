@@ -1,5 +1,5 @@
 package com.example.hangman.util
 
 interface MakeRoomDialogListener {
-    fun onClickMakeRoom()
+    fun onClickMakeRoom(memberCount: Int)
 }
