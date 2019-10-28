@@ -8,6 +8,7 @@ import com.example.hangman.R
 import com.example.hangman.data.model.Participants
 import com.example.hangman.data.model.Room
 import com.example.hangman.ui.adapter.MainAdapter
+import com.example.hangman.ui.dialog.MakeRoomDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -29,5 +30,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val adapter = MainAdapter(info)
         rv_main.adapter = adapter
         rv_main.layoutManager = LinearLayoutManager(applicationContext)
+
+        tv_make_room_main.setOnClickListener {
+            var dialog = MakeRoomDialog(this)
+            dialog.show()
+        }
     }
 }
