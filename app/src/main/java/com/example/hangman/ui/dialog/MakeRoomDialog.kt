@@ -2,7 +2,6 @@ package com.example.hangman.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Point
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
@@ -13,6 +12,7 @@ import kotlinx.android.synthetic.main.dialog_makeroom.*
 class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
 
     private lateinit var listener: MakeRoomDialogListener
+    private var memberCount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,8 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
 
         seekbar_makeroom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tv_count_makeroom.text = "${p1}명"
+                memberCount = p1
+                tv_count_makeroom.text = "${memberCount}명"
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -43,7 +44,10 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.button_makeroom_cancel -> dismiss()
-            R.id.button_makeroom_makeroom -> listener.onClickMakeRoom()
+            R.id.button_makeroom_makeroom -> {
+                listener.onClickMakeRoom(memberCount)
+                dismiss()
+            }
         }
     }
 
