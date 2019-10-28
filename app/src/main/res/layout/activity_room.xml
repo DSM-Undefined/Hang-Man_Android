@@ -196,7 +196,7 @@
             app:layout_constraintBottom_toBottomOf="@id/room_toolbar_guide4"
             app:layout_constraintStart_toStartOf="@id/room_toolbar_guide1"
             app:layout_constraintEnd_toEndOf="@id/room_toolbar_guide3"
-            android:background="#D93644"/>
+            android:background="#ed2ca6"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/room_toolbar_guide5"
@@ -293,7 +293,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:text="준비"
-            android:background="#7E1F28"/>
+            android:background="#7D362B"/>
 
         <Button
             android:id="@+id/button_out"
@@ -305,7 +305,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="나가기"
             android:textColor="@color/white"
-            android:background="#101351"/>
+            android:background="#1A3437"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
