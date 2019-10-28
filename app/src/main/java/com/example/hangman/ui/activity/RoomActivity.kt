@@ -23,21 +23,6 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
 
         btn_ready.setOnClickListener {
             presenter.sendReadyData()
-
-//            var i = 0;
-//            if (i == 0) {
-//                button_out.setBackgroundColor(R.color.readyOutButton)
-//                button_ready.setBackgroundColor(R.color.readyButton)
-//                button_out.setEnabled(false)
-//                i = 1
-//            } else {
-//                button_out.setBackgroundColor(R.color.colorPrimary)
-//                button_ready.setBackgroundColor(R.color.colorAccent)
-//                button_out.setEnabled(true)
-//                i = 0
-//            }
-
-            // TODO : 여기 수정 해야됨
         }
     }
 
@@ -90,13 +75,16 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
     override fun setReadyExitEnabled() {
         btn_exit.isEnabled = !btn_exit.isEnabled
 
-        if (btn_ready.isEnabled && btn_exit.isEnabled) {
-            btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.readyColor))
-            btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.exitColor))
-        } else if (!btn_ready.isEnabled && !btn_exit.isEnabled) {
-            btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.noReadyColor))
-            btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.noExitColor))
-        }
+        setBackgroundColor()
+    }
 
+    private fun setBackgroundColor() {
+        if (btn_exit.isEnabled) {
+            btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent))
+            btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        } else if (!btn_exit.isEnabled) {
+            btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.readyButton))
+            btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.readyOutButton))
+        }
     }
 }
