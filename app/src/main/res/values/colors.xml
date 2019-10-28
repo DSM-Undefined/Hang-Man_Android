@@ -6,4 +6,10 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="editTextcolor">#2B2A26</color>
+    
+    <color name="noReadyColor">#d75c4a</color>
+    <color name="readyColor">#d75c4a</color>
+    <color name="exitColor">#4e9ba2</color>
+    <color name="noExitColor">#4e9ba2</color>
+    
 </resources>

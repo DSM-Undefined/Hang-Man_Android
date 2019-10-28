@@ -16,4 +16,9 @@ class RoomPresenter(private val view: RoomContract.View) : RoomContract.Presente
             )
         )
     }
+
+    override fun sendReadyData() {
+        // TODO : isReady 등, 게임 방 안에서 User의 Ready 여부 등에 대한 서버 통신 내용을 작성합니다.
+        view.setReadyExitEnabled()
+    }
 }
