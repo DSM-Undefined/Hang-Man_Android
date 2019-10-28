@@ -1,10 +1,7 @@
 package com.example.hangman.ui.activity
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.example.hangman.R
@@ -16,31 +13,31 @@ import kotlinx.android.synthetic.main.activity_room.*
 class RoomActivity : AppCompatActivity(), RoomContract.View {
     private lateinit var presenter: RoomPresenter
 
-    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
 
-        var i = 0
-        button_ready.setOnClickListener {
-            if(i==0){
-                button_out.setBackgroundColor(R.color.readyOutButton)
-                button_ready.setBackgroundColor(R.color.readyButton)
-                button_out.setEnabled(false)
-                i =1
-            }else{
-                button_out.setBackgroundColor(R.color.colorPrimary)
-                button_ready.setBackgroundColor(R.color.colorAccent)
-                button_out.setEnabled(true)
-                i =0
-            }
-        }
         presenter = RoomPresenter(this)
         presenter.getUserData()
         // TODO : getUserData()를 무한반복해야 한다. 그 이유는 방 목록을 갱신해야 되는데 Socket 방식이 아님.
 
         btn_ready.setOnClickListener {
             presenter.sendReadyData()
+
+//            var i = 0;
+//            if (i == 0) {
+//                button_out.setBackgroundColor(R.color.readyOutButton)
+//                button_ready.setBackgroundColor(R.color.readyButton)
+//                button_out.setEnabled(false)
+//                i = 1
+//            } else {
+//                button_out.setBackgroundColor(R.color.colorPrimary)
+//                button_ready.setBackgroundColor(R.color.colorAccent)
+//                button_out.setEnabled(true)
+//                i = 0
+//            }
+
+            // TODO : 여기 수정 해야됨
         }
     }
 
