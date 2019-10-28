@@ -293,7 +293,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:text="준비"
-            android:background="#7E1F28"/>
+            android:background="#D93644"/>
 
         <Button
             android:id="@+id/button_out"
@@ -305,7 +305,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="나가기"
             android:textColor="@color/white"
-            android:background="#101351"/>
+            android:background="#1B208C"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
