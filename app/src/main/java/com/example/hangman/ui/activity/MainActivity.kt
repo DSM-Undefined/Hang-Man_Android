@@ -1,5 +1,6 @@
 package com.example.hangman.ui.activity
 
+import android.content.Intent
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,8 +36,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         val makeRoomDialog = MakeRoomDialog(this)
         makeRoomDialog.setListener(object : MakeRoomDialogListener{
-            override fun onClickMakeRoom() {
-                //TODO: make room Activity
+            override fun onClickMakeRoom(memberCount: Int) {
+                val intent = Intent(this@MainActivity, RoomActivity::class.java)
+                intent.putExtra("memberCount", memberCount)
+                startActivity(intent)
             }
 
         })
