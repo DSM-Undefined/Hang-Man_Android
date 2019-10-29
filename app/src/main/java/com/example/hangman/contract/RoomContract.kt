@@ -24,6 +24,9 @@ interface RoomContract {
 
     interface Presenter {
         fun getUserData()
+
         fun sendReadyData()
+
+        fun sendExitData()
     }
 }

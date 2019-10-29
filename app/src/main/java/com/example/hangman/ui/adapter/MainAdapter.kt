@@ -11,17 +11,22 @@ import com.example.hangman.R
 import com.example.hangman.data.model.Room
 import com.example.hangman.ui.activity.RoomActivity
 
-class MainAdapter(private val infoList: ArrayList<Room>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private var roomList: ArrayList<Room>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
         return MainViewHolder(view)
     }
 
-    override fun getItemCount(): Int = infoList.size
+    override fun getItemCount(): Int = roomList.size
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(infoList[position])
+        holder.bind(roomList[position])
+    }
+
+    fun setList(roomList : ArrayList<Room>) {
+        this.roomList = roomList
+        notifyDataSetChanged()
     }
 
     class MainViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
