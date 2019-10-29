@@ -19,10 +19,17 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
 
         presenter = RoomPresenter(this)
         presenter.getUserData()
-        // TODO : getUserData()를 무한반복해야 한다. 그 이유는 방 목록을 갱신해야 되는데 Socket 방식이 아님.
-
+        /* TODO : getUserData()를 무한반복해야 한다.
+         ** 그 이유는 방 목록을 갱신해야 되는데 Socket 방식이 아님.
+         ** 즉 Rx를 이용해서 1초간 반복할 예정이다.
+            */
         btn_ready.setOnClickListener {
             presenter.sendReadyData()
+        }
+
+        btn_exit.setOnClickListener {
+            presenter.sendExitData()
+            finish()
         }
     }
 
