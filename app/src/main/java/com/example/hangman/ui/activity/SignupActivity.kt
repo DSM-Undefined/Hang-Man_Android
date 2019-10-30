@@ -29,32 +29,34 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        presenter = SignupPresenter()
+        presenter = SignupPresenter(this)
 
         btn_signup.setOnClickListener {
-            if (!presenter.pwCheckData(
+            if (ed_id_signup.text.toString().isEmpty()) {
+                showToast("아이디를 입력하세요.")
+            } else if (ed_password_signup.text.toString().isEmpty()) {
+                showToast("비밀번호를 입력하세요.")
+            } else if (ed_pwcheck_signup.text.toString().isEmpty()) {
+                showToast("비밀번호 확인을 입력하세요.")
+            } else if (!presenter.pwCheckData(
                     ed_password_signup.text.toString(),
                     ed_pwcheck_signup.text.toString()
                 )
             ) {
                 showToast("비밀번호가 다릅니다.")
             } else {
-                CreateRetrofit.createRetrofit()
-                    .create(AuthService::class.java)
-                    .userLogin(User("1234", "Test", "real@daum.net"))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : DisposableSingleObserver<Response<Void>>() {
-                        override fun onSuccess(response: Response<Void>) {
-                            Log.d("success", "success")
-                        }
-
-                        override fun onError(e: Throwable) {
-                            Log.d("error", e.message!!)
-                        }
-                    })
+                presenter.doLogin(User())
             }
         }
+    }
+
+    override fun successLoginToast() {
+        showToast("회원가입에 성공했습니다.")
+        finish()
+    }
+
+    override fun failLoginToast(errorReason: String) {
+        showToast(errorReason)
     }
 
     override fun errorToast(text: String) {
