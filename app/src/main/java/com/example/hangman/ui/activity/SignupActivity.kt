@@ -5,11 +5,21 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import com.example.hangman.R
 import com.example.hangman.contract.SignupContract
+import com.example.hangman.data.model.User
+import com.example.hangman.data.service.AuthService
 import com.example.hangman.presenter.SignupPresenter
+import com.example.hangman.util.CreateRetrofit
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_decide.*
 import kotlinx.android.synthetic.main.activity_signup.*
+import android.util.Log
+import com.example.hangman.R
+import okhttp3.ResponseBody
+import retrofit2.Response
+
 
 class SignupActivity : AppCompatActivity(), SignupContract.View {
 
@@ -29,9 +39,21 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
             ) {
                 showToast("비밀번호가 다릅니다.")
             } else {
-                showToast("회원가입에 성공했습니다.")
+                CreateRetrofit.createRetrofit()
+                    .create(AuthService::class.java)
+                    .userLogin(User("1234", "Test", "real@daum.net"))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : DisposableSingleObserver<Response<Void>>() {
+                        override fun onSuccess(response: Response<Void>) {
+                            Log.d("success", "success")
+                        }
+
+                        override fun onError(e: Throwable) {
+                            Log.d("error", e.message!!)
+                        }
+                    })
             }
-            finish()
         }
     }
 

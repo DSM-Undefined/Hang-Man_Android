@@ -26,6 +26,8 @@ android {
 dependencies {
     def okhttp = '4.1.0'
     def retrofit = '2.6.1'
+    def rxjava = '2.2.8'
+    def rxandroid = '2.0.2'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -42,4 +44,9 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofit}"
+    // Rxjava, RxAndroid
+    implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
+    // RxJava - RxAndroid Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
 }
