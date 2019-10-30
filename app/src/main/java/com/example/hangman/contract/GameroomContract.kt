@@ -6,6 +6,8 @@ interface GameroomContract {
         fun rightText(appendText: String, index: Int)
         fun setEditText(text: String)
         fun wrongText(appendText: String)
+        fun gameFail()
+        fun gameSuccess()
     }
 
     interface Presenter {
