@@ -49,4 +49,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
     // RxJava - RxAndroid Adapter
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
+    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:3.0.0'
+    //for custom floating action button
 }
