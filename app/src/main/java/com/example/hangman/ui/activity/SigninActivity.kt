@@ -20,7 +20,6 @@ class SigninActivity : AppCompatActivity(), SigninContract.View {
 
         btn_signin.setOnClickListener {
             presenter.doSignIn(ed_id.text.toString(), ed_password.text.toString())
-            finish()
         }
 
         tv_signup_button.setOnClickListener {
@@ -30,6 +29,7 @@ class SigninActivity : AppCompatActivity(), SigninContract.View {
 
     override fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun showToast(text: String) {
