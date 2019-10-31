@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hangman.contract.MainContract
 import com.example.hangman.R
-import com.example.hangman.data.model.Rooms
+import com.example.hangman.data.model.Room
 import com.example.hangman.presenter.MainPresenter
 import com.example.hangman.ui.adapter.MainAdapter
 import com.example.hangman.ui.dialog.MakeRoomDialog
@@ -16,7 +17,7 @@ import com.example.hangman.util.MakeRoomDialogListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-    private var roomList = arrayListOf<Rooms>()
+    private var roomList = arrayListOf<Room>()
 
     private lateinit var presenter: MainPresenter
     private lateinit var adapter: MainAdapter
@@ -24,16 +25,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, this)
         presenter.getRoomsData()
 
-        adapter = MainAdapter(roomList)
+        adapter = MainAdapter(roomList, presenter)
         rv_main.adapter = adapter
         rv_main.layoutManager = LinearLayoutManager(this)
 
         val makeRoomDialog = MakeRoomDialog(this)
+
         makeRoomDialog.setListener(object : MakeRoomDialogListener {
-            override fun onClickMakeRoom(memberCount: Int) {
+            override fun onClickMakeRoom(roomName: String, memberCount: Int) {
+                presenter.makeNewRoom(Room(name = roomName, maxPlayer = memberCount))
+
                 val intent = Intent(this@MainActivity, RoomActivity::class.java)
                 intent.putExtra("memberCount", memberCount)
                 startActivity(intent)
@@ -62,7 +66,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
-    override fun setRoomList(roomList: ArrayList<Rooms>) {
+    override fun setRoomList(roomList: ArrayList<Room>) {
         this.roomList = roomList
         adapter.setList(this.roomList)
     }

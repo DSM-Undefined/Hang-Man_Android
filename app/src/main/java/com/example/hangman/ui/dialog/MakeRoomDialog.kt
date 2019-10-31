@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.dialog_makeroom.*
 class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
 
     private lateinit var listener: MakeRoomDialogListener
-    private var memberCount: Int = 0
+    private var memberCount: Int = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
         when(v?.id){
             R.id.button_makeroom_cancel -> dismiss()
             R.id.button_makeroom_makeroom -> {
-                listener.onClickMakeRoom(memberCount)
+                listener.onClickMakeRoom(ed_title_makeroom.text.toString(), memberCount)
                 dismiss()
             }
         }

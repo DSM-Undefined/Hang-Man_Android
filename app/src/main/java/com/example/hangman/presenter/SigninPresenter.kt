@@ -2,6 +2,7 @@ package com.example.hangman.presenter
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.util.Log
 import com.example.hangman.contract.SigninContract
 import com.example.hangman.data.model.Token
 import com.example.hangman.data.model.User
@@ -23,8 +24,10 @@ class SigninPresenter(private val context : Context, private val view : SigninCo
                 override fun onSuccess(t: Token) {
                     val pref = context.getSharedPreferences("token", MODE_PRIVATE)
                     val editor = pref.edit()
-                    editor.putString("Token", t.access)
+                    editor.putString("token", t.access)
                     editor.apply()
+
+                    Log.d("save token", t.access)
 
                     view.startMainActivity()
                 }
