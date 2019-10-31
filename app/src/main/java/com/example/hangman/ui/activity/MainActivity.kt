@@ -4,11 +4,11 @@ import android.content.Intent
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hangman.contract.MainContract
 import com.example.hangman.R
-import com.example.hangman.data.model.Participants
-import com.example.hangman.data.model.Room
+import com.example.hangman.data.model.Rooms
 import com.example.hangman.presenter.MainPresenter
 import com.example.hangman.ui.adapter.MainAdapter
 import com.example.hangman.ui.dialog.MakeRoomDialog
@@ -16,24 +16,16 @@ import com.example.hangman.util.MakeRoomDialogListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-    private var roomList = arrayListOf<Room>()
-    private lateinit var presenter : MainPresenter
-    private lateinit var adapter : MainAdapter
+    private var roomList = arrayListOf<Rooms>()
 
+    private lateinit var presenter: MainPresenter
+    private lateinit var adapter: MainAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         presenter = MainPresenter(this)
-
-        roomList.add(Room("Sample room1", participants = Participants(1, 3)))
-        roomList.add(Room("Sample room2", participants = Participants(2, 4)))
-        roomList.add(Room("Sample room3", participants = Participants(3, 4)))
-        roomList.add(Room("Sample room4", participants = Participants(4, 6)))
-        roomList.add(Room("Sample room5", participants = Participants(1, 6)))
-        roomList.add(Room("Sample room6", participants = Participants(3, 6)))
-        roomList.add(Room("Sample room7", participants = Participants(4, 6)))
-        roomList.add(Room("Sample room8", participants = Participants(3, 6)))
+        presenter.getRoomsData()
 
         adapter = MainAdapter(roomList)
         rv_main.adapter = adapter
@@ -66,7 +58,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun setRoomList(roomList : ArrayList<Room>) {
+    override fun errorToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun setRoomList(roomList: ArrayList<Rooms>) {
         this.roomList = roomList
         adapter.setList(this.roomList)
     }
