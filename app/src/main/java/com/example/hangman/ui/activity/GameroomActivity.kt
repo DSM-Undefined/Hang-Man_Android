@@ -8,10 +8,38 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
 import com.example.hangman.presenter.GameroomPresenter
 import kotlinx.android.synthetic.main.activity_decide.*
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_a
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_b
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_c
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_d
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_e
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_f
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_g
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_h
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_i
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_j
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_k
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_l
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_m
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_n
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_o
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_p
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_q
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_r
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_s
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_t
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_u
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_v
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_w
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_x
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_y
+import kotlinx.android.synthetic.main.activity_decide.tv_kb_z
+import kotlinx.android.synthetic.main.activity_gameroom.*
 
 class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View {
 
@@ -118,6 +146,15 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         val tv: TextView = findViewById(tvid)
         tv.setBackgroundResource(R.drawable.circle_correct_answer)
         tv.isEnabled = false
+        gameSuccess()
+    }
+    override fun gameSuccess() {
+        tv_reply.text = "성공"
+        tv_reply.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
+    }
+    override fun gameFail() {
+        tv_reply.text = "실패"
+        tv_reply.setTextColor(ContextCompat.getColor(this,R.color.colorAccent))
     }
 
 }
