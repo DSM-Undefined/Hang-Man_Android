@@ -12,6 +12,6 @@ interface SignupContract {
 
     interface Presenter {
         fun pwCheckData(pwText : String, pwCheckText : String): Boolean
-        fun doLogin(user : User)
+        fun doSignUp(user : User)
     }
 }

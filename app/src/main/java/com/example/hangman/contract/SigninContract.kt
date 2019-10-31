@@ -3,9 +3,10 @@ package com.example.hangman.contract
 interface SigninContract {
     interface View {
         fun startMainActivity()
+        fun showToast(text : String)
     }
 
     interface Presenter {
-        fun checkIDPW(id : String, password : String)
+        fun doSignIn(id : String, password : String)
     }
 }

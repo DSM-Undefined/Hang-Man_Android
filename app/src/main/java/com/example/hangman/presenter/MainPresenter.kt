@@ -15,6 +15,7 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
         roomList.add(Room("Refresh room6", participants = Participants(3, 6)))
         roomList.add(Room("Refresh room7", participants = Participants(4, 6)))
         roomList.add(Room("Refresh room8", participants = Participants(3, 6)))
+        // TODO : 여기에서 방 리스트를 가져오는 로직을 작성
         view.setRoomList(roomList)
     }
 
