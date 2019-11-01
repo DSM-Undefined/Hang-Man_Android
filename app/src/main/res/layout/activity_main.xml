@@ -52,13 +52,16 @@
 
             <ImageView
                 android:id="@+id/img_user_main"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#D93644"
+                android:layout_width="59dp"
+                android:layout_height="59dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_main_user"
+                android:padding="6dp"
                 app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide4"
                 app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide3"
                 app:layout_constraintStart_toStartOf="@id/main_toolbar_guide1"
                 app:layout_constraintTop_toTopOf="@id/main_toolbar_guide2" />
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/main_toolbar_guide5"
