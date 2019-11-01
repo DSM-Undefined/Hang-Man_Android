@@ -143,6 +143,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         val tv: TextView = findViewById(tvid)
         tv.setBackgroundResource(R.drawable.ic_close_black_24dp)
         tv.isEnabled = false
+        
     }
 
     override fun rightText(appendText: String, index: Int) {

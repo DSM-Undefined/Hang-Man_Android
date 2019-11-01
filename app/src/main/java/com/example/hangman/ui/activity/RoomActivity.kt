@@ -35,6 +35,7 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
 
         btn_ready.setOnClickListener {
             if (btn_ready.text == "시작") {
+                presenter.checkAllUserReady()
                 val intent = Intent(this, DecideActivity::class.java)
                 intent.putExtra("roomId", roomId)
                 startActivity(intent)
@@ -157,5 +158,13 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
     override fun onDestroy() {
         super.onDestroy()
         repeatRoomDisposable?.dispose()
+    }
+
+    override fun disabledStartButton() {
+        btn_ready.isEnabled = false
+    }
+
+    override fun enabledStartButton() {
+        btn_ready.isEnabled = true
     }
 }

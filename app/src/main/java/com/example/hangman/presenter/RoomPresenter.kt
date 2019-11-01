@@ -20,6 +20,55 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
     RoomContract.Presenter {
     private lateinit var roomId: String
 
+    override fun checkAllUserReady() {
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val myId = pref.getString("id", "")
+
+        CreateRetrofit.createRetrofit().create(RoomService::class.java)
+            .getRoomData(roomId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Room>() {
+                override fun onSuccess(room: Room) {
+                    if (room.status == "on_game") {
+                        view.startGameroomActivity()
+                    } else {
+                        val users = room.participants
+                        var allReady = true
+
+                        for (user in users!!) {
+                            if (users.last() != myId) {
+                                CreateRetrofit.createRetrofit().create(AuthService::class.java)
+                                    .getUserData(user!!)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(object : DisposableSingleObserver<User>() {
+                                        override fun onSuccess(t: User) {
+                                            if (t.id != myId && t.ready == false) {
+                                                view.disabledStartButton()
+                                            }
+                                            else {
+                                                view.enabledStartButton()
+                                            }
+                                        }
+
+                                        override fun onError(e: Throwable) {
+                                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                                        }
+                                    })
+
+                            }
+                        }
+
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+            })
+    }
+
     override fun getUserData(roomId: String) {
         val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
         this.roomId = roomId
@@ -31,7 +80,7 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableSingleObserver<Room>() {
                 override fun onSuccess(room: Room) {
-                    if(room.status == "on_game") {
+                    if (room.status == "on_game") {
                         view.startGameroomActivity()
                     } else {
                         val users = room.participants
@@ -52,7 +101,7 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
                                     override fun onSuccess(t: User) {
                                         if (userId == room.admin) {
                                             userImageData[index] = UserState.KING
-                                            if(userId == myId) {
+                                            if (userId == myId) {
                                                 view.setReadyTextChangeStartText()
                                             }
                                         } else if (userId == myId && t.ready == true) {
@@ -79,7 +128,7 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
                 }
 
                 override fun onError(e: Throwable) {
-                    if(e.message == "HTTP 404 Not Found") {
+                    if (e.message == "HTTP 404 Not Found") {
                         view.roomUndefined()
                     }
                 }
