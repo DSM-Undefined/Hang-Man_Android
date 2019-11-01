@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,10 +38,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         makeRoomDialog.setListener(object : MakeRoomDialogListener {
             override fun onClickMakeRoom(roomName: String, memberCount: Int) {
                 presenter.makeNewRoom(Room(name = roomName, maxPlayer = memberCount))
-
-                val intent = Intent(this@MainActivity, RoomActivity::class.java)
-                intent.putExtra("memberCount", memberCount)
-                startActivity(intent)
             }
         })
 
@@ -70,4 +67,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         this.roomList = roomList
         adapter.setList(this.roomList)
     }
+
+    override fun startRoomActivity(roomId: String) {
+        val intent = Intent(this, RoomActivity::class.java)
+        intent.putExtra("roomId", roomId)
+        // 추후 MVP로 제대로된 리팩토링 할때 room id 가져올 때 presenter에서 가져와야 하는가? 아니면 여기서 해도 되는가 등에 대해서 논의한다.
+        startActivity(intent)
+    }
+
 }

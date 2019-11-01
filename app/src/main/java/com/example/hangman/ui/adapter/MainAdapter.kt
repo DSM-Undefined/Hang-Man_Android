@@ -40,7 +40,11 @@ class MainAdapter(private var roomList: ArrayList<Room>, val presenter : MainPre
             tvCount.text = "${room.participants?.size}/${room.maxPlayer}"
             itemLayout.setOnClickListener {
                 room.id?.let { it1 -> presenter.joinRoom(it1) }
-                itemView.context.startActivity(Intent(itemView.context, RoomActivity::class.java))
+
+                val intent = Intent(itemView.context, RoomActivity::class.java)
+                intent.putExtra("roomId", room.id)
+                // 추후 MVP로 제대로된 리팩토링 할때 room id 가져올 때 presenter에서 가져와야 하는가? 아니면 여기서 해도 되는가 등에 대해서 논의한다.
+                itemView.context.startActivity(intent)
             }
         }
     }

@@ -25,6 +25,7 @@ class SigninPresenter(private val context : Context, private val view : SigninCo
                     val pref = context.getSharedPreferences("token", MODE_PRIVATE)
                     val editor = pref.edit()
                     editor.putString("token", t.access)
+                    editor.putString("id", id)
                     editor.apply()
 
                     Log.d("save token", t.access)

@@ -34,7 +34,6 @@ class MainPresenter(private val context: Context, private val view: MainContract
     }
 
     override fun makeNewRoom(room: Room) {
-        // sharedpreference
         val pref = context.getSharedPreferences("token", MODE_PRIVATE)
         val token = pref.getString("token", "")
 
@@ -44,20 +43,19 @@ class MainPresenter(private val context: Context, private val view: MainContract
             .newRoomData("Bearer $token", room)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableSingleObserver<Response<Void>>() {
-                override fun onSuccess(t: Response<Void>) {
-                    Log.d("success makeRoom", "make room success ${t.code()}")
+            .subscribe(object : DisposableSingleObserver<Room>() {
+                override fun onSuccess(t: Room) {
+                    view.startRoomActivity(t.id!!)
                 }
 
                 override fun onError(e: Throwable) {
                     Log.d("error log", e.message!!)
                 }
-
             })
+
     }
 
-    override fun joinRoom(roomId : String) {
-        // sharedpreference
+    override fun joinRoom(roomId: String) {
         val pref = context.getSharedPreferences("token", MODE_PRIVATE)
         val token = pref.getString("token", "")
 
@@ -69,7 +67,7 @@ class MainPresenter(private val context: Context, private val view: MainContract
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableSingleObserver<Response<Void>>() {
                 override fun onSuccess(t: Response<Void>) {
-                    Log.d("success joinroom", "join room success ${t.code()}")
+
                 }
 
                 override fun onError(e: Throwable) {

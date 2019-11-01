@@ -7,14 +7,17 @@ import retrofit2.http.*
 
 interface RoomService {
     @GET("rooms")
-    fun getRoomsData() : Single<ArrayList<Room>>
+    fun getRoomsData(): Single<ArrayList<Room>>
 
-    @GET("room")
-    fun getClickRoomData() : Single<Room>
+    @GET("room/{roomId}")
+    fun getRoomData(@Path("roomId") roomId: String): Single<Room>
 
     @POST("room/{roomId}/participant")
-    fun joinRoom(@Header("Authorization") token : String, @Path("roomId") roomId : String) : Single<Response<Void>>
+    fun joinRoom(@Header("Authorization") token: String, @Path("roomId") roomId: String): Single<Response<Void>>
 
     @POST("room")
-    fun newRoomData(@Header("Authorization") token : String, @Body room : Room) : Single<Response<Void>>
+    fun newRoomData(@Header("Authorization") token: String, @Body room: Room): Single<Room>
+
+    @DELETE("room/{roomId}/participant")
+    fun exitRoom(@Header("Authorization") token: String, @Path("roomId") roomId: String) : Single<Response<Void>>
 }

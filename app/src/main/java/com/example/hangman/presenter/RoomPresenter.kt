@@ -1,30 +1,116 @@
 package com.example.hangman.presenter
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import com.example.hangman.contract.RoomContract
+import com.example.hangman.data.model.Room
+import com.example.hangman.data.model.User
+import com.example.hangman.data.service.AuthService
+import com.example.hangman.data.service.RoomService
+import com.example.hangman.util.CreateRetrofit
 import com.example.hangman.util.UserState
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 
-class RoomPresenter(private val view: RoomContract.View) : RoomContract.Presenter {
-    override fun getUserData() {
-        // TODO : 이 부분에서 서버와 통신을 통해서 방 유저들의 목록과 상태를 가져온다.
-        view.setImageViews(
-            arrayListOf(
-                UserState.KING,
-                UserState.ME,
-                UserState.USER_READY,
-                UserState.USER,
-                UserState.BLOCK,
-                UserState.BLOCK
-            )
-        )
+class RoomPresenter(private val view: RoomContract.View, private val context: Context) :
+    RoomContract.Presenter {
+    private lateinit var roomId: String
+
+    override fun getUserData(roomId: String) {
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        this.roomId = roomId
+        val myId: String? = pref.getString("id", "")
+
+        CreateRetrofit.createRetrofit().create(RoomService::class.java)
+            .getRoomData(roomId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Room>() {
+                override fun onSuccess(room: Room) {
+                    val users = room.participants
+                    val max = room.maxPlayer
+
+                    val userImageData = ArrayList<UserState>()
+                    max?.let {
+                        repeat(it) { userImageData.add(UserState.BLOCK) }
+                    }
+
+                    Log.d("users data", users.toString())
+                    Log.d("admin data", room.admin)
+                    Log.d("data 비교", (room.admin == users!![0]).toString())
+
+                    for (index in room.participants.indices) {
+                        val userId = room.participants[index]
+                        CreateRetrofit.createRetrofit().create(AuthService::class.java)
+                            .getUserData(userId!!)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(object : DisposableSingleObserver<User>() {
+                                override fun onSuccess(t: User) {
+                                    if (userId == room.admin) {
+                                        userImageData[index] = UserState.KING
+                                        if(userId == myId) {
+                                            view.setReadyTextChangeStartText()
+                                        }
+                                    } else if (userId == myId && t.ready == true) {
+                                        userImageData[index] = UserState.ME_READY
+                                    } else if (userId == myId && t.ready == false) {
+                                        userImageData[index] = UserState.ME
+                                    } else if (userId != myId && t.ready == true) {
+                                        userImageData[index] = UserState.USER_READY
+                                    } else if (userId != myId && t.ready == false) {
+                                        userImageData[index] = UserState.USER
+                                    } else {
+                                        userImageData[index] = UserState.BLOCK
+                                    }
+
+                                    view.setImageViews(userImageData)
+                                }
+
+                                override fun onError(e: Throwable) {
+                                    Log.e("error!", e.message!!)
+                                }
+                            })
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    if(e.message == "HTTP 404 Not Found") {
+                        view.roomUndefined()
+                    }
+                }
+
+            })
     }
 
     override fun sendReadyData() {
         // TODO : 내 Ready 여부를 전송합니다. 또한 유저 정보를 여기서 '한번 더' 가져오면서 자신의 레디 정보를 갱신합니다.
         view.setReadyExitEnabled()
-        getUserData()
+        getUserData(roomId)
     }
 
     override fun sendExitData() {
-        // TODO : 방을 나갈 경우 이 메소드에서 방 나감을 서버에 통보하는 내용 작성합니다.
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val token: String? = pref.getString("token", "")
+
+        token?.let {
+            CreateRetrofit.createRetrofit().create(RoomService::class.java)
+                .exitRoom("Bearer $it", roomId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : DisposableSingleObserver<Response<Void>>() {
+                    override fun onSuccess(t: Response<Void>) {
+                        view.finishActivity()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("error", e.message!!)
+                    }
+                })
+        }
     }
 }

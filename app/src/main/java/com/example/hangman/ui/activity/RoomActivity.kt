@@ -2,29 +2,46 @@ package com.example.hangman.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.hangman.R
 import com.example.hangman.contract.RoomContract
 import com.example.hangman.presenter.RoomPresenter
 import com.example.hangman.util.UserState
+import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_room.*
+import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 class RoomActivity : AppCompatActivity(), RoomContract.View {
     private lateinit var presenter: RoomPresenter
+    private var repeatRoomDisposable : Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
 
-        presenter = RoomPresenter(this)
-        presenter.getUserData()
-        /* TODO : getUserData()를 무한반복해야 한다.
-         ** 그 이유는 방 목록을 갱신해야 되는데 Socket 방식이 아님.
-         ** 즉 Rx를 이용해서 1초간 반복할 예정이다.
-            */
+        val roomId = intent.extras?.getString("roomId")
+
+        Log.d("getRoomID", roomId)
+
+        presenter = RoomPresenter(this, this)
+
+        repeatRoomDisposable = roomId?.let { roomId ->
+            Observable
+                .interval(1, TimeUnit.SECONDS)
+                .subscribe { presenter.getUserData(roomId) }
+        }
+
         btn_ready.setOnClickListener {
-            presenter.sendReadyData()
+            if (btn_ready.text == "시작") {
+                // 게임 시작
+            } else {
+                presenter.sendReadyData()
+            }
         }
 
         btn_exit.setOnClickListener {
@@ -43,7 +60,7 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
             iv_character6
         )
 
-        for (index in imageViewList.indices) {
+        for (index in usersState.indices) {
             when (usersState[index]) {
                 UserState.KING -> setImageKing(imageViewList[index])
                 UserState.ME -> setImageMe(imageViewList[index])
@@ -64,7 +81,7 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
     }
 
     override fun setImageUser(imageView: ImageView) {
-        imageView.setImageResource(R.drawable.ic_room_ready_user)
+        imageView.setImageResource(R.drawable.ic_room_user)
     }
 
     override fun setImageReadyMe(imageView: ImageView) {
@@ -76,13 +93,32 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
     }
 
     override fun setImageBlock(imageView: ImageView) {
-        imageView.setImageResource(R.drawable.ic_room_block)
+        imageView.setImageResource(0)
+    }
+
+    override fun setReadyTextChangeStartText() {
+        btn_ready.text = "시작"
     }
 
     override fun setReadyExitEnabled() {
         btn_exit.isEnabled = !btn_exit.isEnabled
 
         setBackgroundColor()
+    }
+
+
+    override fun finishActivity() {
+        finish()
+    }
+
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "나가기 버튼을 이용해 주세요.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun roomUndefined() {
+        Toast.makeText(this, "방장이 게임에서 나갔습니다.", Toast.LENGTH_SHORT).show()
+        finish()
     }
 
     private fun setBackgroundColor() {
