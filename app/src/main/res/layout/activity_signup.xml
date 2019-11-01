@@ -116,23 +116,6 @@
         android:theme="@style/EditSignupTheme"
         app:layout_constraintVertical_bias="0.643" />
 
-    <EditText
-        android:id="@+id/ed_email_signup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:lineSpacingExtra="3sp"
-        android:textColorHint="#707070"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/signup_right_guide"
-        app:layout_constraintStart_toStartOf="@+id/signup_left_guide"
-        app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/EditSignupTheme"
-        app:layout_constraintVertical_bias="0.743" />
-
     <Button
         android:id="@+id/btn_signup"
         android:text="Sign Up"
