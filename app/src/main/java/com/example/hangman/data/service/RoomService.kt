@@ -12,12 +12,15 @@ interface RoomService {
     @GET("room/{roomId}")
     fun getRoomData(@Path("roomId") roomId: String): Single<Room>
 
-    @POST("room/{roomId}/participant")
-    fun joinRoom(@Header("Authorization") token: String, @Path("roomId") roomId: String): Single<Response<Void>>
-
     @POST("room")
     fun newRoomData(@Header("Authorization") token: String, @Body room: Room): Single<Room>
 
+    @PUT("room/{roomId}/participant")
+    fun sendReadyData(@Header("Authorization") token: String, @Path("roomId") roomId: String): Single<Response<Void>>
+
     @DELETE("room/{roomId}/participant")
     fun exitRoom(@Header("Authorization") token: String, @Path("roomId") roomId: String) : Single<Response<Void>>
+
+    @POST("room/{roomId}/participant")
+    fun joinRoom(@Header("Authorization") token: String, @Path("roomId") roomId: String): Single<Response<Void>>
 }

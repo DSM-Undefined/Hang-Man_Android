@@ -18,7 +18,7 @@ import kotlin.collections.ArrayList
 
 class RoomActivity : AppCompatActivity(), RoomContract.View {
     private lateinit var presenter: RoomPresenter
-    private var repeatRoomDisposable : Disposable? = null
+    private var repeatRoomDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,11 +106,9 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
         setBackgroundColor()
     }
 
-
     override fun finishActivity() {
         finish()
     }
-
 
     override fun onBackPressed() {
         Toast.makeText(this, "나가기 버튼을 이용해 주세요.", Toast.LENGTH_SHORT).show()
@@ -129,5 +127,10 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
             btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.readyButton))
             btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.readyOutButton))
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        repeatRoomDisposable?.dispose()
     }
 }

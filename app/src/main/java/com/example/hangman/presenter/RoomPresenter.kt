@@ -88,9 +88,24 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
     }
 
     override fun sendReadyData() {
-        // TODO : 내 Ready 여부를 전송합니다. 또한 유저 정보를 여기서 '한번 더' 가져오면서 자신의 레디 정보를 갱신합니다.
-        view.setReadyExitEnabled()
-        getUserData(roomId)
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val token: String? = pref.getString("token", "")
+
+        CreateRetrofit.createRetrofit().create(RoomService::class.java)
+            .sendReadyData("Bearer $token", roomId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Response<Void>>() {
+                override fun onSuccess(t: Response<Void>) {
+                    view.setReadyExitEnabled()
+                    getUserData(roomId)
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.d("error log", e.message!!)
+                }
+
+            })
     }
 
     override fun sendExitData() {
