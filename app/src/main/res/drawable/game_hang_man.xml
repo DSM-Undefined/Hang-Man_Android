@@ -70,40 +70,4 @@
         android:strokeColor="#000"
         android:strokeLineCap="round"
         android:strokeWidth="10" />
-    <path
-        android:name="path_16"
-        android:pathData="M 215 180 L 255 216"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
-    <path
-        android:name="path_15"
-        android:pathData="M 215 180 L 175 216"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
-    <path
-        android:name="path_14"
-        android:pathData="M 215 100 L 255 136"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
-    <path
-        android:name="path_13"
-        android:pathData="M 215 100 L 175 136"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
-    <path
-        android:name="path_12"
-        android:pathData="M 215 98 L 215 180"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
-    <path
-        android:name="path_11"
-        android:pathData="M 215 34 C 231 34 247 50 247 66 C 247 82 231 98 215 98 C 199 98 183 82 183 66 C 183 50 199 34 215 34"
-        android:strokeColor="#000"
-        android:strokeLineCap="round"
-        android:strokeWidth="10" />
 </vector>

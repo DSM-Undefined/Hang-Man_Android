@@ -20,6 +20,52 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
     RoomContract.Presenter {
     private lateinit var roomId: String
 
+    override fun checkAllUserReady() {
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val myId = pref.getString("id", "")
+
+        CreateRetrofit.createRetrofit().create(RoomService::class.java)
+            .getRoomData(roomId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Room>() {
+                override fun onSuccess(room: Room) {
+                    if (room.status == "on_game") {
+                        view.startGameroomActivity()
+                    } else {
+                        val users = room.participants
+                        var allReady = true
+
+                        for (user in users!!) {
+                            if (users.last() != myId) {
+                                CreateRetrofit.createRetrofit().create(AuthService::class.java)
+                                    .getUserData(user!!)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(object : DisposableSingleObserver<User>() {
+                                        override fun onSuccess(t: User) {
+                                            if (t.id != myId && t.ready == false) {
+                                                view.disabledStartButton()
+                                            } else {
+                                                view.enabledStartButton()
+                                            }
+                                        }
+
+                                        override fun onError(e: Throwable) {
+                                        }
+                                    })
+
+                            }
+                        }
+
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                }
+            })
+    }
+
     override fun getUserData(roomId: String) {
         val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
         this.roomId = roomId
@@ -31,55 +77,55 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableSingleObserver<Room>() {
                 override fun onSuccess(room: Room) {
-                    val users = room.participants
-                    val max = room.maxPlayer
+                    if (room.status == "on_game") {
+                        view.startGameroomActivity()
+                    } else {
+                        val users = room.participants
+                        val max = room.maxPlayer
+                        val userImageData = ArrayList<UserState>()
 
-                    val userImageData = ArrayList<UserState>()
-                    max?.let {
-                        repeat(it) { userImageData.add(UserState.BLOCK) }
-                    }
+                        max?.let {
+                            repeat(it) { userImageData.add(UserState.BLOCK) }
+                        }
 
-                    Log.d("users data", users.toString())
-                    Log.d("admin data", room.admin)
-                    Log.d("data 비교", (room.admin == users!![0]).toString())
-
-                    for (index in room.participants.indices) {
-                        val userId = room.participants[index]
-                        CreateRetrofit.createRetrofit().create(AuthService::class.java)
-                            .getUserData(userId!!)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(object : DisposableSingleObserver<User>() {
-                                override fun onSuccess(t: User) {
-                                    if (userId == room.admin) {
-                                        userImageData[index] = UserState.KING
-                                        if(userId == myId) {
-                                            view.setReadyTextChangeStartText()
+                        for (index in users!!.indices) {
+                            val userId = users[index]
+                            CreateRetrofit.createRetrofit().create(AuthService::class.java)
+                                .getUserData(userId!!)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(object : DisposableSingleObserver<User>() {
+                                    override fun onSuccess(t: User) {
+                                        if (userId == room.admin) {
+                                            userImageData[index] = UserState.KING
+                                            if (userId == myId) {
+                                                view.setReadyTextChangeStartText()
+                                            }
+                                        } else if (userId == myId && t.ready == true) {
+                                            userImageData[index] = UserState.ME_READY
+                                        } else if (userId == myId && t.ready == false) {
+                                            userImageData[index] = UserState.ME
+                                        } else if (userId != myId && t.ready == true) {
+                                            userImageData[index] = UserState.USER_READY
+                                        } else if (userId != myId && t.ready == false) {
+                                            userImageData[index] = UserState.USER
+                                        } else {
+                                            userImageData[index] = UserState.BLOCK
                                         }
-                                    } else if (userId == myId && t.ready == true) {
-                                        userImageData[index] = UserState.ME_READY
-                                    } else if (userId == myId && t.ready == false) {
-                                        userImageData[index] = UserState.ME
-                                    } else if (userId != myId && t.ready == true) {
-                                        userImageData[index] = UserState.USER_READY
-                                    } else if (userId != myId && t.ready == false) {
-                                        userImageData[index] = UserState.USER
-                                    } else {
-                                        userImageData[index] = UserState.BLOCK
+
+                                        view.setImageViews(userImageData)
                                     }
 
-                                    view.setImageViews(userImageData)
-                                }
-
-                                override fun onError(e: Throwable) {
-                                    Log.e("error!", e.message!!)
-                                }
-                            })
+                                    override fun onError(e: Throwable) {
+                                        Log.e("error!", e.message!!)
+                                    }
+                                })
+                        }
                     }
                 }
 
                 override fun onError(e: Throwable) {
-                    if(e.message == "HTTP 404 Not Found") {
+                    if (e.message == "HTTP 404 Not Found") {
                         view.roomUndefined()
                     }
                 }
