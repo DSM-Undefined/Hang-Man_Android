@@ -13,11 +13,16 @@ import com.example.hangman.util.CreateRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 import java.lang.NullPointerException
 
 class GameroomPresenter(private val view: GameroomActivity, private val context: Context) :
     GameroomContract.Presenter {
+    private var roomId : String? = null
+
     override fun getWordLength(roomId: String) {
+        this.roomId = roomId
+
         CreateRetrofit.createRetrofit().create(RoomService::class.java)
             .getRoomData(roomId)
             .subscribeOn(Schedulers.io())
@@ -34,6 +39,8 @@ class GameroomPresenter(private val view: GameroomActivity, private val context:
     }
 
     override fun alphabetsOnClick(text: String, roomId: String) {
+        this.roomId = roomId
+
         val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
         val token: String? = pref.getString("token", "")
 
@@ -57,5 +64,28 @@ class GameroomPresenter(private val view: GameroomActivity, private val context:
                 }
 
             })
+    }
+
+    override fun sendExitData() {
+        val pref = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val token: String? = pref.getString("token", "")
+
+        token?.let {
+            roomId?.let { it1 ->
+                CreateRetrofit.createRetrofit().create(RoomService::class.java)
+                    .exitRoom("Bearer $it", it1)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : DisposableSingleObserver<Response<Void>>() {
+                        override fun onSuccess(t: Response<Void>) {
+                            view.finishGameroomActivity()
+                        }
+
+                        override fun onError(e: Throwable) {
+                            Log.d("error", e.message!!)
+                        }
+                    })
+            }
+        }
     }
 }

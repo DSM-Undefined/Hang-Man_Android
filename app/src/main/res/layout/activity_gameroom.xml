@@ -555,10 +555,10 @@
         app:layout_constraintGuide_percent="0.103" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_hangman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/game_hang_man_head"
+        android:src="@drawable/game_hang_man"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 

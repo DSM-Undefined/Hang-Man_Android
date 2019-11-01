@@ -46,14 +46,12 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
                                         override fun onSuccess(t: User) {
                                             if (t.id != myId && t.ready == false) {
                                                 view.disabledStartButton()
-                                            }
-                                            else {
+                                            } else {
                                                 view.enabledStartButton()
                                             }
                                         }
 
                                         override fun onError(e: Throwable) {
-                                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                                         }
                                     })
 
@@ -64,7 +62,6 @@ class RoomPresenter(private val view: RoomContract.View, private val context: Co
                 }
 
                 override fun onError(e: Throwable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
             })
     }
