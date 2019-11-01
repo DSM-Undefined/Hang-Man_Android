@@ -128,50 +128,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="LV 1"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide11"
                 app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide10"
                 app:layout_constraintStart_toStartOf="@id/main_toolbar_guide5"
                 app:layout_constraintTop_toTopOf="@id/main_toolbar_guide9" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/main_toolbar_guide12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.736" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/main_toolbar_guide13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.300" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/main_toolbar_guide14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.944" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/main_toolbar_guide15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.713" />
-
-            <TextView
-                android:id="@+id/tv_make_room_main"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="방생성"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="@id/main_toolbar_guide15"
-                app:layout_constraintEnd_toEndOf="@id/main_toolbar_guide14"
-                app:layout_constraintStart_toStartOf="@id/main_toolbar_guide12"
-                app:layout_constraintTop_toTopOf="@id/main_toolbar_guide13" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -186,13 +147,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_toolbar_main">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_main"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#F4F6FC"
-            tools:itemCount="8"
-            tools:listitem="@layout/item_main" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F4F6FC"
+                tools:itemCount="8"
+                tools:listitem="@layout/item_main" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_make_room_main"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_add_white_24dp"
+                app:backgroundTint="#1b208c"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             swipe_main.isRefreshing = false
         }
 
-        tv_make_room_main.setOnClickListener {
+        button_make_room_main.setOnClickListener {
             makeRoomDialog.show()
             val display = windowManager.defaultDisplay
             val size = Point()

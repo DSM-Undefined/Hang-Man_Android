@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.DecideActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.MainActivity"/>
     </application>
 
 </manifest>
