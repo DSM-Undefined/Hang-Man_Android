@@ -1,14 +1,17 @@
 package com.example.hangman.contract
 
-import com.example.hangman.data.model.Rooms
+import com.example.hangman.data.model.Room
 
 interface MainContract {
     interface View {
-        fun setRoomList(roomList : ArrayList<Rooms>)
+        fun setRoomList(roomList: ArrayList<Room>)
         fun errorToast(text: String)
+        fun startRoomActivity(roomId: String)
     }
 
     interface Presenter {
         fun getRoomsData()
+        fun makeNewRoom(room: Room)
+        fun joinRoom(roomId: String)
     }
 }

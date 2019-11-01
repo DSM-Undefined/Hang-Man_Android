@@ -1,6 +1,6 @@
 package com.example.hangman.data.model
 
-data class Rooms(
+data class Room(
 	val maxPlayer: Int? = null,
 	val name: String? = null,
 	val admin: String? = null,
