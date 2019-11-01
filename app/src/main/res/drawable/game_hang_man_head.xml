@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+
+        <vector
+            android:name="vector"
+            android:width="274dp"
+            android:height="274dp"
+            android:viewportWidth="274"
+            android:viewportHeight="274">
+
+            <path
+                android:name="path"
+                android:pathData="M 13 267 L 172 267"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_1"
+                android:pathData="M 13 267 C 13 255 25 243 37 243"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_2"
+                android:pathData="M 37 243 L 148 243"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_3"
+                android:pathData="M 148 243 C 160 243 172 255 172 267"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_4"
+                android:pathData="M 105.5 238.5 L 105.5 112.5"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_5"
+                android:pathData="M 105.5 88.5 L 105.5 89.5"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_6"
+                android:pathData="M 105.5 65.5 L 105.5 5.5"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_7"
+                android:pathData="M 85 242 L 85 5"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_8"
+                android:pathData="M 85 5 L 203 5"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_9"
+                android:pathData="M 203 5 C 209 5 215 11 215 17"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_10"
+                android:pathData="M 215 17 L 215 34"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+            <path
+                android:name="path_11"
+                android:pathData="M 215 34 C 231 34 247 50 247 66 C 247 82 231 98 215 98 C 199 98 183 82 183 66 C 183 50 199 34 215 34"
+                android:strokeWidth="10"
+                android:strokeColor="#000"
+                android:strokeLineCap="round" />
+
+        </vector>
+
+    </aapt:attr>
+    <target android:name="path_11">
+        <aapt:attr name="android:animation">
+
+            <objectAnimator
+                android:duration="400"
+                android:interpolator="@android:interpolator/fast_out_slow_in"
+                android:propertyName="trimPathEnd"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:valueType="floatType" />
+
+        </aapt:attr>
+
+    </target>
+
+</animated-vector>

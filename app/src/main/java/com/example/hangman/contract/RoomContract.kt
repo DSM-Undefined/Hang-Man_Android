@@ -20,10 +20,16 @@ interface RoomContract {
         fun setImageBlock(imageView: ImageView)
 
         fun setReadyExitEnabled()
+
+        fun finishActivity()
+
+        fun setReadyTextChangeStartText()
+
+        fun roomUndefined()
     }
 
     interface Presenter {
-        fun getUserData()
+        fun getUserData(roomId : String)
 
         fun sendReadyData()
 
