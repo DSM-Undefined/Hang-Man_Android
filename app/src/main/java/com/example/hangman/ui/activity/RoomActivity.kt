@@ -19,6 +19,7 @@ import kotlin.collections.ArrayList
 class RoomActivity : AppCompatActivity(), RoomContract.View {
     private lateinit var presenter: RoomPresenter
     private var repeatRoomDisposable: Disposable? = null
+    private var isReady : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,12 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
             if (btn_ready.text == "시작") {
                 // 게임 시작
             } else {
+                isReady = !isReady
+                if (isReady){
+                    btn_ready.text = "준비완료"
+                } else{
+                    btn_ready.text = "준비"
+                }
                 presenter.sendReadyData()
             }
         }
