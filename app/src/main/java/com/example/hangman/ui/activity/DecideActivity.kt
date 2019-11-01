@@ -14,12 +14,14 @@ import kotlinx.android.synthetic.main.activity_decide.*
 
 class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract.View {
     private lateinit var presenter: DecidePresenter
+    private var roomId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_decide)
 
-        presenter = DecidePresenter(this)
+        roomId = intent.extras?.getString("roomId")
+        presenter = DecidePresenter(this, this)
 
         initViewListener()
     }
@@ -59,7 +61,9 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
 
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_submit) {
-            presenter.checkLetterCount(ed_Questions_word.length())
+            roomId?.let {
+                presenter.checkLetterCountAndSetAnswer(ed_Questions_word.text.toString(), it)
+            }
         } else if (view?.id == R.id.btn_delete) {
             presenter.onClickDeleteButton(ed_Questions_word.text.toString())
         } else if (view is TextView?) {
@@ -76,7 +80,7 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
         ed_Questions_word.setText(text)
     }
 
-    override fun errorToast(text: String) {
+    override fun showToast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 

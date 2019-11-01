@@ -1,5 +1,6 @@
 package com.example.hangman.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,32 +20,29 @@ import kotlin.collections.ArrayList
 class RoomActivity : AppCompatActivity(), RoomContract.View {
     private lateinit var presenter: RoomPresenter
     private var repeatRoomDisposable: Disposable? = null
-    private var isReady : Boolean = false
+    private var isReady: Boolean = false
+    private var roomId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
 
-        val roomId = intent.extras?.getString("roomId")
+        roomId = intent.extras?.getString("roomId")
 
         Log.d("getRoomID", roomId)
 
         presenter = RoomPresenter(this, this)
 
-        repeatRoomDisposable = roomId?.let { roomId ->
-            Observable
-                .interval(1, TimeUnit.SECONDS)
-                .subscribe { presenter.getUserData(roomId) }
-        }
-
         btn_ready.setOnClickListener {
             if (btn_ready.text == "시작") {
-                // 게임 시작
+                val intent = Intent(this, DecideActivity::class.java)
+                intent.putExtra("roomId", roomId)
+                startActivity(intent)
             } else {
                 isReady = !isReady
-                if (isReady){
+                if (isReady) {
                     btn_ready.text = "준비완료"
-                } else{
+                } else {
                     btn_ready.text = "준비"
                 }
                 presenter.sendReadyData()
@@ -126,6 +124,12 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
         finish()
     }
 
+    override fun startGameroomActivity() {
+        val intent = Intent(this, GameroomActivity::class.java)
+        intent.putExtra("roomId", roomId)
+        startActivity(intent)
+    }
+
     private fun setBackgroundColor() {
         if (btn_exit.isEnabled) {
             btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent))
@@ -134,6 +138,20 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
             btn_ready.setBackgroundColor(ContextCompat.getColor(this, R.color.readyButton))
             btn_exit.setBackgroundColor(ContextCompat.getColor(this, R.color.readyOutButton))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        repeatRoomDisposable = roomId?.let { roomId ->
+            Observable
+                .interval(1, TimeUnit.SECONDS)
+                .subscribe { presenter.getUserData(roomId) }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        repeatRoomDisposable?.dispose()
     }
 
     override fun onDestroy() {

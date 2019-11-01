@@ -23,6 +23,8 @@ interface RoomContract {
 
         fun finishActivity()
 
+        fun startGameroomActivity()
+
         fun setReadyTextChangeStartText()
 
         fun roomUndefined()

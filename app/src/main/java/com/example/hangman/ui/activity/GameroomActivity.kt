@@ -3,15 +3,24 @@ package com.example.hangman.ui.activity
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
+import com.example.hangman.data.model.Room
+import com.example.hangman.data.model.User
+import com.example.hangman.data.service.RoomService
 import com.example.hangman.presenter.GameroomPresenter
+import com.example.hangman.util.CreateRetrofit
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_decide.*
 import kotlinx.android.synthetic.main.activity_decide.tv_kb_a
 import kotlinx.android.synthetic.main.activity_decide.tv_kb_b
@@ -44,35 +53,34 @@ import kotlinx.android.synthetic.main.activity_gameroom.*
 class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View {
 
     var tvArray = arrayListOf<TextView>()
+
     private lateinit var presenter: GameroomPresenter
+    private var roomId: String? = null
+    private var length: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameroom)
 
-        presenter = GameroomPresenter(this)
+        roomId = intent.extras?.getString("roomId")
+        presenter = GameroomPresenter(this, this)
         initViewListener()
-        addEditTexts(4)
-    }
 
+        presenter.getWordLength(roomId!!)
+
+        Log.d("gameroomactivity length", length.toString())
+    }
 
     private fun addEditTexts(num: Int) {
         val tvcolor = "#2B2A26"
         val linearlayout: LinearLayout = findViewById(R.id.gameroom_letter)
         linearlayout.gravity = Gravity.CENTER
 
-/*
-         val gameroom_tv_1 : TextView = TextView(this)
-         gameroom_tv_1.setText("A")
-         gameroom_tv_1.setTextSize(35F)
-         gameroom_tv_1.setTextColor(Color.parseColor(tvcolor))
-         gameroom_tv_1.setBackgroundResource(R.drawable.gameroom_edittext_custum)
-         linearlayout.addView(gameroom_tv_1)*/
-
-
         tvArray = arrayListOf()
-        repeat(5) {
-            tvArray.add(TextView(this))
+        length?.plus(1)?.let {
+            repeat(it) {
+                tvArray.add(TextView(this))
+            }
         }
         val tvGameroom1 = TextView(this)
         tvGameroom1.text = "  "
@@ -81,7 +89,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
             tvArray[i].setTextColor(Color.parseColor(tvcolor))
             tvArray[i].setPadding(0, 0, 0, 3)
             tvArray[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
-            tvArray[i].setGravity(Gravity.CENTER)
+            tvArray[i].gravity = Gravity.CENTER
             tvArray[i].setBackgroundResource(R.drawable.gameroom_edittext_custum)
         }
         for (i in 0..num) {
@@ -89,6 +97,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         }
 
     }
+
 
     private fun initViewListener() {
         tv_kb_a.setOnClickListener(this)
@@ -121,16 +130,12 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
 
     override fun onClick(view: View?) {
         if (view is TextView?) {
-            presenter.alphabetsOnClick(view?.text.toString())
+            roomId?.let { presenter.alphabetsOnClick(view?.text.toString(), it) }
         }
     }
 
     override fun setEditText(text: String) {
         ed_Questions_word.setText(text)
-    }
-
-    override fun appendText(appendText: String) {
-        //tvArray[0].text = appendText
     }
 
     override fun wrongText(appendText: String) {
@@ -148,13 +153,25 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         tv.isEnabled = false
         gameSuccess()
     }
+
     override fun gameSuccess() {
         tv_reply.text = "성공"
         tv_reply.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
     }
+
     override fun gameFail() {
         tv_reply.text = "실패"
-        tv_reply.setTextColor(ContextCompat.getColor(this,R.color.colorAccent))
+        tv_reply.setTextColor(ContextCompat.getColor(this, R.color.colorAccent))
+    }
+
+    override fun setLength(length: Int) {
+        this.length = length
+        addEditTexts(length - 1)
+    }
+
+    override fun finishGame() {
+        Toast.makeText(this, "게임 종료! 메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+        finish()
     }
 
 }
