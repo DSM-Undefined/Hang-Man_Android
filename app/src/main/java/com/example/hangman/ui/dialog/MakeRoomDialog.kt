@@ -21,21 +21,23 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
         setCanceledOnTouchOutside(true)
         window?.setDimAmount(0.8f)
 
-        seekbar_makeroom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                memberCount = p1
-                tv_count_makeroom.text = "${memberCount}명"
-            }
+        memberCount = 2
 
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-
-        })
+//        seekbar_makeroom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+//            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+//                memberCount = p1
+//                tv_count_makeroom.text = "${memberCount}명"
+//            }
+//
+//            override fun onStartTrackingTouch(p0: SeekBar?) {
+//
+//            }
+//
+//            override fun onStopTrackingTouch(p0: SeekBar?) {
+//
+//            }
+//
+//        })
 
         button_makeroom_makeroom.setOnClickListener(this)
         button_makeroom_cancel.setOnClickListener(this)
