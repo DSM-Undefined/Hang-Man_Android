@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CreateRetrofit {
     companion object {
-        private val baseUrl = "http://hangman.jaehoon.kim:8080/api/v1/"
+        private val baseUrl = "http://hangman.jaehoon.kim/api/v1/"
 
         private lateinit var retrofit : Retrofit
 

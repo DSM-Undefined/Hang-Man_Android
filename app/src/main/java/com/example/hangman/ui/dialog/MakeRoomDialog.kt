@@ -45,9 +45,13 @@ class MakeRoomDialog(context: Context) : Dialog(context), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.button_makeroom_cancel -> dismiss()
+            R.id.button_makeroom_cancel -> {
+                ed_title_makeroom.setText("")
+                dismiss()
+            }
             R.id.button_makeroom_makeroom -> {
                 listener.onClickMakeRoom(ed_title_makeroom.text.toString(), memberCount)
+                ed_title_makeroom.setText("")
                 dismiss()
             }
         }

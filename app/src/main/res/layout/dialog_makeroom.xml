@@ -63,13 +63,14 @@
         android:id="@+id/ed_title_makeroom"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@id/makeroom_guide5"
-        app:layout_constraintBottom_toBottomOf="@id/makeroom_guide6"
+        app:layout_constraintTop_toTopOf="@id/makeroom_guide9"
+        app:layout_constraintBottom_toBottomOf="@id/makeroom_guide10"
         app:layout_constraintStart_toStartOf="@id/makeroom_guide1"
         app:layout_constraintEnd_toEndOf="@id/makeroom_guide3"
         android:importantForAutofill="no"
         android:inputType="text"
         android:hint="@null"/>
+    <!-- was 5, 6 guide line top and bottom -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/makeroom_guide7"
