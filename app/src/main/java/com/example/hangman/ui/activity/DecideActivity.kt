@@ -10,12 +10,15 @@ import android.widget.Toast
 import com.example.hangman.R
 import com.example.hangman.contract.DecideContract
 import com.example.hangman.presenter.DecidePresenter
+import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_decide.*
+import java.util.concurrent.TimeUnit
 
 class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract.View {
     private lateinit var presenter: DecidePresenter
     private var roomId: String? = null
-
+    private var repeatGameEnabled : Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_decide)
@@ -24,6 +27,9 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
         presenter = DecidePresenter(this, this)
 
         initViewListener()
+
+        repeatGameEnabled = Observable.interval(1, TimeUnit.SECONDS)
+            .subscribe { roomId?.let { presenter.gameIsEnabled(it) } }
     }
 
     private fun initViewListener() {
@@ -87,5 +93,14 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
     override fun buttonAnimation() {
         val shack: Animation = AnimationUtils.loadAnimation(this, R.anim.dicide_an_error)
         btn_submit.startAnimation(shack)
+    }
+
+    override fun finishActivity() {
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        repeatGameEnabled?.dispose()
     }
 }

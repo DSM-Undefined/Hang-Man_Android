@@ -4,12 +4,13 @@ import android.content.Context
 import android.util.Log
 import com.example.hangman.contract.DecideContract
 import com.example.hangman.data.model.Answer
+import com.example.hangman.data.model.Room
 import com.example.hangman.data.service.GameService
+import com.example.hangman.data.service.RoomService
 import com.example.hangman.util.CreateRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import okhttp3.ResponseBody
 import retrofit2.Response
 
 class DecidePresenter(private val view: DecideContract.View, private val context: Context) :
@@ -22,6 +23,22 @@ class DecidePresenter(private val view: DecideContract.View, private val context
         if (text.isNotEmpty()) {
             view.setEditText(text.substring(0, text.length - 1))
         }
+    }
+
+    override fun gameIsEnabled(roomId: String) {
+        CreateRetrofit.createRetrofit().create(RoomService::class.java)
+            .getRoomData(roomId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableSingleObserver<Room>() {
+                override fun onSuccess(t: Room) {
+
+                }
+
+                override fun onError(e: Throwable) {
+                    view.finishActivity()
+                }
+            })
     }
 
     override fun checkLetterCountAndSetAnswer(answer: String, roomId: String) {

@@ -24,11 +24,10 @@ class SigninPresenter(private val context : Context, private val view : SigninCo
                 override fun onSuccess(t: Token) {
                     val pref = context.getSharedPreferences("token", MODE_PRIVATE)
                     val editor = pref.edit()
+                    Log.d("save token", t.access)
                     editor.putString("token", t.access)
                     editor.putString("id", id)
                     editor.apply()
-
-                    Log.d("save token", t.access)
 
                     view.startMainActivity()
                 }
