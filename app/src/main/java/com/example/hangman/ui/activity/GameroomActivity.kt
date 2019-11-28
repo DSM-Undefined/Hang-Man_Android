@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -15,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
+import androidx.core.os.postDelayed
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
@@ -140,83 +142,87 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
     override fun wrongText(appendText: String) {
         val tvid = resources.getIdentifier("tv_kb_" + appendText.toLowerCase(), "id", packageName)
         val tv: TextView = findViewById(tvid)
-        tv.setBackgroundResource(com.example.hangman.R.drawable.ic_close_black_24dp)
+        tv.setBackgroundResource(R.drawable.ic_close_black_24dp)
         tv.isEnabled = false
 
         when (deathCount) {
             0 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_head)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_head)
             }
             1 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_body)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_body)
             }
             2 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_left_hand)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_left_hand)
             }
             3 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_right_hand)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_right_hand)
             }
             4 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_left_leg)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_left_leg)
             }
             5 -> {
+                iv_hangman.setImageResource(R.drawable.game_hang_man_right_leg)
+
                 val drawable = iv_hangman.drawable
-                if(drawable is AnimatedVectorDrawable) {
+                if (drawable is AnimatedVectorDrawable) {
                     val animatedVectorDrawable = drawable as AnimatedVectorDrawable
                     animatedVectorDrawable.start()
                 } else if (drawable is AnimatedVectorDrawableCompat) {
                     val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
                     animatedVectorDrawableCompat.start()
                 }
-                iv_hangman.setImageResource(R.drawable.game_hang_man_right_leg)
-
                 Toast.makeText(this, "게임 종료! 패배!", Toast.LENGTH_SHORT).show()
                 presenter.sendExitData()
-                finish()
             }
         }
 
-        if(deathCount >= 5) {
+        if (deathCount < 5) {
             deathCount++
         } else {
             deathCount = 0
@@ -245,5 +251,4 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
     override fun finishGameroomActivity() {
         finish()
     }
-
 }

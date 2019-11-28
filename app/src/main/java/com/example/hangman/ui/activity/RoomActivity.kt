@@ -129,6 +129,7 @@ class RoomActivity : AppCompatActivity(), RoomContract.View {
         val intent = Intent(this, GameroomActivity::class.java)
         intent.putExtra("roomId", roomId)
         startActivity(intent)
+        finish()
     }
 
     private fun setBackgroundColor() {
