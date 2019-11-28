@@ -69,7 +69,6 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
 
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_submit) {
-            presenter.checkLetterCount(ed_Questions_word.length())
             btn_submit.isEnabled = false
             roomId?.let {
                 presenter.checkLetterCountAndSetAnswer(ed_Questions_word.text.toString(), it)
