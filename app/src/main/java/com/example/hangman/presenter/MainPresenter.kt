@@ -45,14 +45,14 @@ class MainPresenter(private val context: Context, private val view: MainContract
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableSingleObserver<Room>() {
                 override fun onSuccess(t: Room) {
-                    view.startRoomActivity(t.id!!)
+                    Log.d("roomId", t.id)
+                    t.id?.let { view.startRoomActivity(it) }
                 }
 
                 override fun onError(e: Throwable) {
                     Log.d("error log", e.message!!)
                 }
             })
-
     }
 
     override fun joinRoom(roomId: String) {

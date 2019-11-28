@@ -1,10 +1,12 @@
 package com.example.hangman.ui.activity
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.example.hangman.R
@@ -67,6 +69,8 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
 
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_submit) {
+            presenter.checkLetterCount(ed_Questions_word.length())
+            btn_submit.isEnabled = false
             roomId?.let {
                 presenter.checkLetterCountAndSetAnswer(ed_Questions_word.text.toString(), it)
             }
@@ -83,6 +87,8 @@ class DecideActivity : AppCompatActivity(), View.OnClickListener, DecideContract
     }
 
     override fun setEditText(text: String) {
+        val imm  = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         ed_Questions_word.setText(text)
     }
 
