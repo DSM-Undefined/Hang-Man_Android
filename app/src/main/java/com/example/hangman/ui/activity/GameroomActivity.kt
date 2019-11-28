@@ -1,14 +1,21 @@
 package com.example.hangman.ui.activity
 
 import android.graphics.Color
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.example.hangman.R
 import com.example.hangman.contract.GameroomContract
 import com.example.hangman.presenter.GameroomPresenter
@@ -44,35 +51,35 @@ import kotlinx.android.synthetic.main.activity_gameroom.*
 class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomContract.View {
 
     var tvArray = arrayListOf<TextView>()
+
     private lateinit var presenter: GameroomPresenter
+    private var roomId: String? = null
+    private var length: Int? = null
+    private var deathCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gameroom)
 
-        presenter = GameroomPresenter(this)
+        roomId = intent.extras?.getString("roomId")
+        presenter = GameroomPresenter(this, this)
         initViewListener()
-        addEditTexts(4)
-    }
 
+        presenter.getWordLength(roomId!!)
+
+        Log.d("gameroomactivity length", length.toString())
+    }
 
     private fun addEditTexts(num: Int) {
         val tvcolor = "#2B2A26"
         val linearlayout: LinearLayout = findViewById(R.id.gameroom_letter)
         linearlayout.gravity = Gravity.CENTER
 
-/*
-         val gameroom_tv_1 : TextView = TextView(this)
-         gameroom_tv_1.setText("A")
-         gameroom_tv_1.setTextSize(35F)
-         gameroom_tv_1.setTextColor(Color.parseColor(tvcolor))
-         gameroom_tv_1.setBackgroundResource(R.drawable.gameroom_edittext_custum)
-         linearlayout.addView(gameroom_tv_1)*/
-
-
         tvArray = arrayListOf()
-        repeat(5) {
-            tvArray.add(TextView(this))
+        length?.plus(1)?.let {
+            repeat(it) {
+                tvArray.add(TextView(this))
+            }
         }
         val tvGameroom1 = TextView(this)
         tvGameroom1.text = "  "
@@ -81,7 +88,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
             tvArray[i].setTextColor(Color.parseColor(tvcolor))
             tvArray[i].setPadding(0, 0, 0, 3)
             tvArray[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
-            tvArray[i].setGravity(Gravity.CENTER)
+            tvArray[i].gravity = Gravity.CENTER
             tvArray[i].setBackgroundResource(R.drawable.gameroom_edittext_custum)
         }
         for (i in 0..num) {
@@ -89,6 +96,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         }
 
     }
+
 
     private fun initViewListener() {
         tv_kb_a.setOnClickListener(this)
@@ -121,7 +129,7 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
 
     override fun onClick(view: View?) {
         if (view is TextView?) {
-            presenter.alphabetsOnClick(view?.text.toString())
+            roomId?.let { presenter.alphabetsOnClick(view?.text.toString(), it) }
         }
     }
 
@@ -129,15 +137,91 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         ed_Questions_word.setText(text)
     }
 
-    override fun appendText(appendText: String) {
-        //tvArray[0].text = appendText
-    }
-
     override fun wrongText(appendText: String) {
         val tvid = resources.getIdentifier("tv_kb_" + appendText.toLowerCase(), "id", packageName)
         val tv: TextView = findViewById(tvid)
-        tv.setBackgroundResource(R.drawable.ic_close_black_24dp)
+        tv.setBackgroundResource(com.example.hangman.R.drawable.ic_close_black_24dp)
         tv.isEnabled = false
+
+        when (deathCount) {
+            0 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_head)
+            }
+            1 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_body)
+            }
+            2 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_left_hand)
+            }
+            3 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_right_hand)
+            }
+            4 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_left_leg)
+            }
+            5 -> {
+                val drawable = iv_hangman.drawable
+                if(drawable is AnimatedVectorDrawable) {
+                    val animatedVectorDrawable = drawable as AnimatedVectorDrawable
+                    animatedVectorDrawable.start()
+                } else if (drawable is AnimatedVectorDrawableCompat) {
+                    val animatedVectorDrawableCompat = drawable as AnimatedVectorDrawableCompat
+                    animatedVectorDrawableCompat.start()
+                }
+                iv_hangman.setImageResource(R.drawable.game_hang_man_right_leg)
+
+                Toast.makeText(this, "게임 종료! 패배!", Toast.LENGTH_SHORT).show()
+                presenter.sendExitData()
+                finish()
+            }
+        }
+
+        if(deathCount >= 5) {
+            deathCount++
+        } else {
+            deathCount = 0
+        }
+
     }
 
     override fun rightText(appendText: String, index: Int) {
@@ -146,15 +230,20 @@ class GameroomActivity : AppCompatActivity(), View.OnClickListener, GameroomCont
         val tv: TextView = findViewById(tvid)
         tv.setBackgroundResource(R.drawable.circle_correct_answer)
         tv.isEnabled = false
-        gameSuccess()
     }
-    override fun gameSuccess() {
-        tv_reply.text = "성공"
-        tv_reply.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
+
+    override fun setLength(length: Int) {
+        this.length = length
+        addEditTexts(length - 1)
     }
-    override fun gameFail() {
-        tv_reply.text = "실패"
-        tv_reply.setTextColor(ContextCompat.getColor(this,R.color.colorAccent))
+
+    override fun finishGame() {
+        Toast.makeText(this, "게임 종료! 메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+        finish()
+    }
+
+    override fun finishGameroomActivity() {
+        finish()
     }
 
 }

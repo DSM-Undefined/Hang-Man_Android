@@ -53,7 +53,6 @@ class MainPresenter(private val context: Context, private val view: MainContract
                     Log.d("error log", e.message!!)
                 }
             })
-
     }
 
     override fun joinRoom(roomId: String) {

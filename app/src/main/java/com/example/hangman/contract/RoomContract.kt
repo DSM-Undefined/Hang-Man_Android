@@ -23,9 +23,15 @@ interface RoomContract {
 
         fun finishActivity()
 
+        fun startGameroomActivity()
+
         fun setReadyTextChangeStartText()
 
         fun roomUndefined()
+
+        fun disabledStartButton()
+
+        fun enabledStartButton()
     }
 
     interface Presenter {
@@ -34,5 +40,7 @@ interface RoomContract {
         fun sendReadyData()
 
         fun sendExitData()
+
+        fun checkAllUserReady()
     }
 }
